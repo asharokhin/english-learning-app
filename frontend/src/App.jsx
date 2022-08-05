@@ -1,16 +1,28 @@
 import React from 'react';
-import { useRoutes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import routes from './router';
+import Home from './pages/Home';
+import About from './pages/About';
+import Resources from './pages/Resources';
+import Dictionary from './pages/Dictionary';
+import PresentTenses from './pages/PresentTenses';
 
 function App() {
-  const routesList = useRoutes(routes);
-
   return (
     <div className="App">
       <Navbar />
-      {routesList}
-      English study App
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/dictionary" element={<Dictionary />} />
+        <Route path="/resources">
+          <Route index element={<Resources />} />
+          <Route path="grammar">
+            <Route path="present-tense" element={<PresentTenses />} />
+          </Route>
+        </Route>
+
+      </Routes>
     </div>
   );
 }

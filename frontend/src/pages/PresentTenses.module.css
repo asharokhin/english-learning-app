@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box; 
+    align-items: center; 
+}
+.example {
+  color: green;
+}
+
+table,
+td {
+    border: 1px solid green;
+    border-collapse:collapse;
+    text-align:center;
+}
