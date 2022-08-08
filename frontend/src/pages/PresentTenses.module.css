@@ -4,6 +4,10 @@
 }
 .example {
   color: green;
+  
+}
+.inl{
+  display: inline;
 }
 
 table,
