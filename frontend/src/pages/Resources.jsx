@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function Resources() {
   return (
@@ -20,7 +20,9 @@ function Resources() {
             <td>
               <Link to="grammar/present-tense">Present tenses</Link>
             </td>
-            <td>Present simple; present continuous; state verbs; the verb to be</td>
+            <td>
+              Present simple; present continuous; state verbs; the verb to be
+            </td>
           </tr>
         </tbody>
       </table>

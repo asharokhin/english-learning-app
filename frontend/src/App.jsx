@@ -1,11 +1,11 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import About from './pages/About';
-import Resources from './pages/Resources';
-import Dictionary from './pages/Dictionary';
-import PresentTenses from './pages/PresentTenses';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Resources from "./pages/Resources";
+import Dictionary from "./pages/Dictionary";
+import PresentTenses from "./pages/PresentTenses";
 
 function App() {
   return (
@@ -21,7 +21,6 @@ function App() {
             <Route path="present-tense" element={<PresentTenses />} />
           </Route>
         </Route>
-
       </Routes>
     </div>
   );
