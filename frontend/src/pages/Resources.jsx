@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Resources() {
+const Resources = () => {
   return (
     <>
       <h1>Resources</h1>
@@ -28,6 +28,6 @@ function Resources() {
       </table>
     </>
   );
-}
+};
 
 export default Resources;

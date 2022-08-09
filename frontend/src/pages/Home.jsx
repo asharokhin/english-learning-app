@@ -1,6 +1,6 @@
 import React from "react";
 
-function Home() {
+const Home = () => {
   return (
     <div>
       <div>
@@ -26,6 +26,6 @@ function Home() {
       <footer>Fluent English, 2022</footer>
     </div>
   );
-}
+};
 
 export default Home;

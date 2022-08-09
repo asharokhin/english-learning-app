@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./PresentTenses.module.css";
 
-function PresentTenses() {
+const PresentTenses = () => {
   return (
     <div>
       <h1>Present Tenses</h1>
@@ -360,8 +361,12 @@ function PresentTenses() {
         <strong>being</strong> quiet as we don&apos;t want him to make any
         mistakes.
       </p>
+      <hr />
+      <Link to="./exercises" state={{ exId: "pt" }}>
+        Exercises
+      </Link>
     </div>
   );
-}
+};
 
 export default PresentTenses;

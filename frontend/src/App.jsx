@@ -6,8 +6,9 @@ import About from "./pages/About";
 import Resources from "./pages/Resources";
 import Dictionary from "./pages/Dictionary";
 import PresentTenses from "./pages/PresentTenses";
+import Exercises from "./pages/Exercises";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Navbar />
@@ -18,12 +19,15 @@ function App() {
         <Route path="/resources">
           <Route index element={<Resources />} />
           <Route path="grammar">
-            <Route path="present-tense" element={<PresentTenses />} />
+            <Route path="present-tense">
+              <Route index element={<PresentTenses />} />
+              <Route path="exercises" element={<Exercises />} />
+            </Route>
           </Route>
         </Route>
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

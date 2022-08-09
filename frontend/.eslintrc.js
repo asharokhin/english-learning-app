@@ -15,8 +15,15 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "prettier"],
+  plugins: ["react", "react-hook-form", "prettier"],
   rules: {
+    "react/function-component-definition": [
+      2,
+      {
+        namedComponents: ["arrow-function", "function-declaration"],
+        unnamedComponents: "arrow-function",
+      },
+    ],
     "prettier/prettier": "error",
   },
 };

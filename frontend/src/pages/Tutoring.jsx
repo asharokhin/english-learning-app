@@ -1,7 +1,7 @@
 import React from "react";
 
-function Tutoring() {
+const Tutoring = () => {
   return <h1>Tutoring</h1>;
-}
+};
 
 export default Tutoring;
