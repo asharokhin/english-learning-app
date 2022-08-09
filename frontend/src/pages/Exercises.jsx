@@ -2,8 +2,9 @@ import React, { useState } from "react";
 // import { useLocation } from "react-router-dom";
 
 import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
+import TypeInSentence from "./TypeInSentence";
 
-const q = "Choose the correct sentence from each pair.";
+// const q = "Choose the correct sentence from each pair.";
 
 const exercises = [
   {
@@ -55,13 +56,39 @@ const exercises = [
       },
     ],
   },
+  {
+    id: "pt_2",
+    task: "Complete these sentences with the present simple or present continuous form of the verbs.",
+    type: "type_in_sentence",
+    questions: [
+      {
+        sentence:
+          "My father {{c1:knows}} (know) all about mending cars, but nothing about bicycles.",
+      },
+      {
+        sentence: "This pie {{c1:smells}} (smell) a bit odd. What's in it?",
+      },
+      {
+        sentence:
+          "I {{c1:like}} (like) the jacket of this suit, but unfortunately the trousers {{c2:don't fit}} (not fit) me any more.",
+      },
+      {
+        sentence:
+          "You're very quiet this evening. What {{c1:are you thinking}} (you / think) about?",
+      },
+      {
+        sentence:
+          "Who {{c1:is}} (be) that man? Why {{c2:is your sister}} (your sister / be) so rude to him? She {{c3:has}} (have) such beautiful manners normally.",
+      },
+    ],
+  },
 ];
 
 const Exercises = () => {
   // const { state } = useLocation();
   // onst { exId } = state;
 
-  const [currentExercise, setCurrentExercise] = useState(0);
+  const [currentExercise, setCurrentExercise] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isFinished, setFinished] = useState(false);
   const [answers, setAnswers] = useState([]);
@@ -82,6 +109,7 @@ const Exercises = () => {
     if (currentQuestion < exercises[currentExercise].questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else if (currentExercise < exercises.length - 1) {
+      setCurrentQuestion(0);
       setCurrentExercise(currentExercise + 1);
     } else {
       setFinished(true);
@@ -94,6 +122,20 @@ const Exercises = () => {
     nextStep();
   };
 
+  const exerciseHead = () => {
+    return (
+      <>
+        <p>Exercise {currentExercise + 1}</p>
+        <p>
+          Question {currentQuestion + 1} out of{" "}
+          {exercises[currentExercise].questions.length}
+        </p>
+        {exercises[currentExercise].task}
+        <br />
+      </>
+    );
+  };
+
   const showQuestion = () => {
     if (isFinished) {
       console.log(answers);
@@ -103,12 +145,27 @@ const Exercises = () => {
     switch (currExerciseType) {
       case "multiple_choice":
         return (
-          <MultipleChoiceQuestion
-            choices={
-              exercises[currentExercise].questions[currentQuestion].choices
-            }
-            onSubmit={onSubmitAnswer}
-          />
+          <>
+            {exerciseHead()}
+            <MultipleChoiceQuestion
+              choices={
+                exercises[currentExercise].questions[currentQuestion].choices
+              }
+              onSubmit={onSubmitAnswer}
+            />
+          </>
+        );
+      case "type_in_sentence":
+        return (
+          <>
+            {exerciseHead()}
+            <TypeInSentence
+              sentence={
+                exercises[currentExercise].questions[currentQuestion].sentence
+              }
+              onSubmit={onSubmitAnswer}
+            />
+          </>
         );
       default:
         return null;
@@ -118,10 +175,6 @@ const Exercises = () => {
   return (
     <div>
       <h1>Exercises</h1>
-      <h2>dsd</h2>
-      <p>Exercise {0 + 1}</p>
-
-      {q}
       {showQuestion()}
 
       <br />

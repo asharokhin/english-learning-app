@@ -21,6 +21,7 @@ const MultipleChoiceQuestion = ({ choices, onSubmit }) => {
               id={`radio${index}`}
               name="selectedAnswer"
               value={index}
+              required
             />
             {choice}
           </label>
