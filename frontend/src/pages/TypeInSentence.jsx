@@ -1,9 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup.object().shape({
+  selectedAnswer1: yup.string().min(2).max(32),
+  selectedAnswer2: yup.string().min(2).max(32),
+  selectedAnswer3: yup.string().min(2).max(32),
+});
 
 const TypeInSentence = ({ sentence, onSubmit }) => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+    clearErrors,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
+  });
 
   const parsedSentence = []; // parts of input sentence
 
@@ -45,6 +63,7 @@ const TypeInSentence = ({ sentence, onSubmit }) => {
   const onSubmitButton = (data) => {
     onSubmit(data);
     reset();
+    clearErrors();
     // unregisterInputs();
   };
 
@@ -72,6 +91,9 @@ const TypeInSentence = ({ sentence, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit(onSubmitButton)}>
       <div>
+        <p>{errors.selectedAnswer1?.message}</p>
+        <p>{errors.selectedAnswer2?.message}</p>
+        <p>{errors.selectedAnswer3?.message}</p>
         {parsedSentence.map((sentencePart) => mapSentence(sentencePart))}
       </div>
       <button type="submit">Next</button>
