@@ -60,8 +60,13 @@ const exercises = [
     type: "type_in_sentence",
     questions: [
       {
-        sentence:
-          "My father {{c1:knows}} (know) all about mending cars, but nothing about bicycles.",
+        sentences: [
+          {
+            pre: "My father",
+            hint: "know",
+            post: "all about mending cars, but nothing about bicycles.",
+          },
+        ],
         answers: ["knows"],
       },
       // {
@@ -78,11 +83,26 @@ const exercises = [
       //     "You're very quiet this evening. What {{c1:are you thinking}} (you / think) about?",
       //   answers: ["are you thinking"],
       // },
-      // {
-      //   sentence:
-      //     "Who {{c1:is}} (be) that man? Why {{c2:is your sister}} (your sister / be) so rude to him? She {{c3:has}} (have) such beautiful manners normally.",
-      //   answers: ["is", "is your sister", "has"],
-      // },
+      {
+        sentences: [
+          {
+            pre: "Who",
+            hint: "be",
+            post: "that man?",
+          },
+          {
+            pre: "Why",
+            hint: "your sister / be",
+            post: "so rude to him?",
+          },
+          {
+            pre: "She",
+            hint: "have",
+            post: "such beautiful manners normally.",
+          },
+        ],
+        answers: ["is", "is your sister", "has"],
+      },
     ],
   },
 ];
@@ -112,20 +132,22 @@ const Exercises = () => {
   };
 
   return (
-    <div>
-      <h1>Exercises</h1>
-      Exercise {currentExerciseIdx + 1}
+    <>
       {allFinished ? (
-        <ExerciseResults results={usersAnswers} />
+        <ExerciseResults results={usersAnswers} exercises={exercises} />
       ) : (
-        <Exercise
-          key={currentExerciseIdx}
-          ex={exercises[currentExerciseIdx]}
-          onSubmitAnswers={onSubmitAnswers}
-        />
+        <>
+          <h1>Exercises</h1>
+          Exercise {currentExerciseIdx + 1}
+          <Exercise
+            key={currentExerciseIdx}
+            ex={exercises[currentExerciseIdx]}
+            onSubmitAnswers={onSubmitAnswers}
+          />
+        </>
       )}
       <br />
-    </div>
+    </>
   );
 };
 

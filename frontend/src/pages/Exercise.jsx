@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
-import TypeInSentence from "./TypeInSentence";
+import MultipleChoiceQuestion from "./MultipleChoiceQuestion/MultipleChoiceQuestion";
+import TypeInSentence from "./TypeInSentence/TypeInSentence";
 
 const TYPE_IN_SENTENCE = "type_in_sentence";
 const MULTIPLE_CHOICE = "multiple_choice";
@@ -48,7 +48,8 @@ const Exercise = ({ ex, onSubmitAnswers }) => {
     }
   };
 
-  const onSubmitQuestionAnswer = (userAnswer) => {
+  const onSubmitQuestionAnswer = () => {
+    const userAnswer = "";
     const checkedAnswer = checkAnswer(userAnswer);
 
     if (ex.type === TYPE_IN_SENTENCE) {
@@ -96,7 +97,7 @@ const Exercise = ({ ex, onSubmitAnswers }) => {
           <>
             {exerciseHead()}
             <TypeInSentence
-              sentence={ex.questions[currentQuestionIdx].sentence}
+              sentences={ex.questions[currentQuestionIdx].sentences}
               onSubmit={onSubmitQuestionAnswer}
             />
           </>
@@ -110,6 +111,9 @@ const Exercise = ({ ex, onSubmitAnswers }) => {
     <>
       <h1>Question</h1>
       {showQuestion()}
+      <button type="button" onClick={onSubmitQuestionAnswer}>
+        Submit answer
+      </button>
     </>
   );
 };
@@ -123,7 +127,13 @@ Exercise.propTypes = {
       PropTypes.shape({
         choices: PropTypes.arrayOf(PropTypes.string),
         answer: PropTypes.number,
-        sentence: PropTypes.string,
+        sentences: PropTypes.arrayOf(
+          PropTypes.shape({
+            pre: PropTypes.string.isRequired,
+            post: PropTypes.string.isRequired,
+            hint: PropTypes.string.isRequired,
+          })
+        ),
         answers: PropTypes.arrayOf(PropTypes.string),
       })
     ),
