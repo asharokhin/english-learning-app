@@ -6,7 +6,9 @@ const MultipleChoiceQuestion = ({ choices, onSubmit }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmitButton = (data) => {
-    onSubmit(data);
+    const { selectedAnswer } = data;
+
+    onSubmit(Number(selectedAnswer));
   };
 
   return (

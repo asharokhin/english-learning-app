@@ -53,18 +53,10 @@ const TypeInSentence = ({ sentence, onSubmit }) => {
   parseSentence();
   let inputIdx = 0;
 
-  // const unregisterInputs = () => {
-  //   const amountInputs = (sentence.match(/{{c/g) || []).length;
-  //   for (let i = 1; i <= amountInputs; i += 1) {
-  //     unregister(`selectedAnswer${i}`);
-  //   }
-  // };
-
   const onSubmitButton = (data) => {
     onSubmit(data);
     reset();
     clearErrors();
-    // unregisterInputs();
   };
 
   const mapSentence = (sentencePart) => {
