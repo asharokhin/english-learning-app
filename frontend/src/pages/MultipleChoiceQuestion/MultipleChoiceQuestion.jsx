@@ -2,18 +2,31 @@ import React from "react";
 import PropTypes from "prop-types";
 import AnswerOption from "./AnswerOption";
 
-const MultipleChoiceQuestion = ({ choices }) => {
+const MultipleChoiceQuestion = ({ content, onSubmitAnswer }) => {
+  const processAnswer = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    onSubmitAnswer();
+  };
+
   return (
-    <ul>
-      {choices.map((c) => (
-        <AnswerOption key={c} answerContent={c} />
-      ))}
-    </ul>
+    <form onSubmit={processAnswer}>
+      <ul>
+        {content.choices.map((c) => (
+          <AnswerOption key={c} answerContent={c} />
+        ))}
+      </ul>
+      <button type="submit">Save answer</button>
+    </form>
   );
 };
 
 MultipleChoiceQuestion.propTypes = {
-  choices: PropTypes.arrayOf(PropTypes.string).isRequired,
+  content: PropTypes.shape({
+    answer: PropTypes.number,
+    choices: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  onSubmitAnswer: PropTypes.func.isRequired,
 };
 
 export default MultipleChoiceQuestion;

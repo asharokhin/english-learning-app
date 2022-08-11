@@ -1,17 +1,18 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import MultipleChoiceQuestion from "./MultipleChoiceQuestion/MultipleChoiceQuestion";
-import TypeInSentence from "./TypeInSentence/TypeInSentence";
-
-const TYPE_IN_SENTENCE = "type_in_sentence";
-const MULTIPLE_CHOICE = "multiple_choice";
+import Question from "./Question";
+// import { saveAnswer } from "../reducers/exerciseReducer";
 
 const Exercise = ({ ex, onSubmitAnswers }) => {
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
-  const [answers, setAnswers] = useState([]);
-  if (ex === undefined) {
-    return null;
-  }
+  const [answers] = useState([]);
+  // if (ex === undefined) {
+  //   return null;
+  // }
+
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     if (currentQuestionIdx >= ex.questions.length) {
@@ -20,99 +21,73 @@ const Exercise = ({ ex, onSubmitAnswers }) => {
     }
   }, [answers]);
 
-  const parseTypeInAnswer = (userAnswer) => {
-    const userAnswersArray = Object.values(userAnswer);
-    const result = [];
-    for (let i = 0; i < userAnswersArray.length; i += 1) {
-      result[i] = {
-        answer: userAnswersArray[i],
-        isCorrect:
-          userAnswersArray[i] === ex.questions[currentQuestionIdx].answers[i],
-      };
-    }
-    return result;
-  };
+  // const parseTypeInAnswer = (userAnswer) => {
+  //   const userAnswersArray = Object.values(userAnswer);
+  //   const result = [];
+  //   for (let i = 0; i < userAnswersArray.length; i += 1) {
+  //     result[i] = {
+  //       answer: userAnswersArray[i],
+  //       isCorrect:
+  //         userAnswersArray[i] === ex.questions[currentQuestionIdx].answers[i],
+  //     };
+  //   }
+  //   return result;
+  // };
 
-  const checkAnswer = (userAnswer) => {
-    const currExerciseType = ex.type;
-    switch (currExerciseType) {
-      case MULTIPLE_CHOICE:
-        return {
-          answer: userAnswer,
-          isCorrect: userAnswer === ex.questions[currentQuestionIdx].answer,
-        };
-      case TYPE_IN_SENTENCE:
-        return parseTypeInAnswer(userAnswer);
-      default:
-        return null;
-    }
-  };
+  // const checkAnswer = (userAnswer) => {
+  //   console.log(userAnswer);
+  //   // const currExerciseType = ex.type;
+  //   // switch (currExerciseType) {
+  //   //   case MULTIPLE_CHOICE:
+  //   //     return {
+  //   //       answer: userAnswer,
+  //   //       isCorrect: userAnswer === ex.questions[currentQuestionIdx].answer,
+  //   //     };
+  //   //   case TYPE_IN_SENTENCE:
+  //   //     return parseTypeInAnswer(userAnswer);
+  //   //   default:
+  //   //     return null;
+  //   // }
+  // };
 
   const onSubmitQuestionAnswer = () => {
-    const userAnswer = "";
-    const checkedAnswer = checkAnswer(userAnswer);
-
-    if (ex.type === TYPE_IN_SENTENCE) {
-      setAnswers(answers.concat([checkedAnswer]));
+    console.log("submit");
+    // const userAnswer = "";
+    // const checkedAnswer = checkAnswer(userAnswer);
+    // if (ex.type === TYPE_IN_SENTENCE) {
+    //   setAnswers(answers.concat([checkedAnswer]));
+    // } else {
+    //   setAnswers(answers.concat(checkedAnswer));
+    // }
+    if (currentQuestionIdx < ex.questions.length - 1) {
+      setCurrentQuestionIdx(currentQuestionIdx + 1);
     } else {
-      setAnswers(answers.concat(checkedAnswer));
-    }
-    setCurrentQuestionIdx(currentQuestionIdx + 1);
-  };
-
-  const exerciseHead = () => {
-    return (
-      <>
-        <p>
-          Question {currentQuestionIdx + 1} out of {ex.questions.length}
-        </p>
-        {ex.task}
-        <br />
-      </>
-    );
-  };
-  const showQuestion = () => {
-    if (
-      currentQuestionIdx === undefined ||
-      currentQuestionIdx === ex.questions.length
-    ) {
-      return null;
-    }
-
-    const currExerciseType = ex.type;
-
-    switch (currExerciseType) {
-      case MULTIPLE_CHOICE:
-        return (
-          <>
-            {exerciseHead()}
-            <MultipleChoiceQuestion
-              choices={ex.questions[currentQuestionIdx].choices}
-              onSubmit={onSubmitQuestionAnswer}
-            />
-          </>
-        );
-      case TYPE_IN_SENTENCE:
-        return (
-          <>
-            {exerciseHead()}
-            <TypeInSentence
-              sentences={ex.questions[currentQuestionIdx].sentences}
-              onSubmit={onSubmitQuestionAnswer}
-            />
-          </>
-        );
-      default:
-        return null;
+      onSubmitAnswers();
     }
   };
+
+  // const exerciseHead = () => {
+  //   return (
+  //     <>
+  //       <p>
+  //         Question {currentQuestionIdx + 1} out of {ex.questions.length}
+  //       </p>
+  //       {ex.task}
+  //       <br />
+  //     </>
+  //   );
+  // };
 
   return (
     <>
-      <h1>Question</h1>
-      {showQuestion()}
+      <h1>Exercise</h1>
+      <Question
+        questionType={ex.type}
+        questionContent={ex.questions[currentQuestionIdx]}
+        onSubmitQuestionAnswer={onSubmitQuestionAnswer}
+      />
       <button type="button" onClick={onSubmitQuestionAnswer}>
-        Submit answer
+        Button answer
       </button>
     </>
   );
@@ -124,18 +99,22 @@ Exercise.propTypes = {
     task: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     questions: PropTypes.arrayOf(
-      PropTypes.shape({
-        choices: PropTypes.arrayOf(PropTypes.string),
-        answer: PropTypes.number,
-        sentences: PropTypes.arrayOf(
-          PropTypes.shape({
-            pre: PropTypes.string.isRequired,
-            post: PropTypes.string.isRequired,
-            hint: PropTypes.string.isRequired,
-          })
-        ),
-        answers: PropTypes.arrayOf(PropTypes.string),
-      })
+      PropTypes.oneOfType([
+        PropTypes.shape({
+          answer: PropTypes.number,
+          choices: PropTypes.arrayOf(PropTypes.string),
+        }),
+        PropTypes.shape({
+          answers: PropTypes.arrayOf(PropTypes.string),
+          sentences: PropTypes.arrayOf(
+            PropTypes.shape({
+              pre: PropTypes.string,
+              post: PropTypes.string,
+              hint: PropTypes.string,
+            })
+          ),
+        }),
+      ])
     ),
   }).isRequired,
   onSubmitAnswers: PropTypes.func.isRequired,
