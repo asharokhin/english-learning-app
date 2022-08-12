@@ -5,18 +5,24 @@ import AnswerOption from "./AnswerOption";
 const MultipleChoiceQuestion = ({ content, onSubmitAnswer }) => {
   const processAnswer = (e) => {
     e.preventDefault();
-    console.log(e.target);
-    onSubmitAnswer();
+
+    const usersAnswer = Number(e.target.selectedAnswer.value);
+
+    const checkedAnswer = {
+      answer: usersAnswer,
+      isCorrect: usersAnswer === content.answer,
+    };
+    onSubmitAnswer(checkedAnswer);
   };
 
   return (
     <form onSubmit={processAnswer}>
       <ul>
-        {content.choices.map((c) => (
-          <AnswerOption key={c} answerContent={c} />
+        {content.choices.map((c, i) => (
+          <AnswerOption key={c} answerContent={c} id={i} />
         ))}
       </ul>
-      <button type="submit">Save answer</button>
+      <button type="submit">Submit answer</button>
     </form>
   );
 };

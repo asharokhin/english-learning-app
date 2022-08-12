@@ -1,86 +1,35 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import Question from "./Question";
-// import { saveAnswer } from "../reducers/exerciseReducer";
 
 const Exercise = ({ ex, onSubmitAnswers }) => {
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
-  const [answers] = useState([]);
-  // if (ex === undefined) {
-  //   return null;
-  // }
-
-  // const dispatch = useDispatch();
+  const [usersAnswers, setAnswers] = useState([]);
 
   useEffect(() => {
-    if (currentQuestionIdx >= ex.questions.length) {
-      onSubmitAnswers(answers);
-      setCurrentQuestionIdx(undefined);
+    // check whether last question has been answered and amount of answers equals amount of questions
+    if (
+      currentQuestionIdx === ex.questions.length - 1 &&
+      usersAnswers.length === ex.questions.length
+    ) {
+      onSubmitAnswers(usersAnswers);
     }
-  }, [answers]);
+  }, [usersAnswers]);
 
-  // const parseTypeInAnswer = (userAnswer) => {
-  //   const userAnswersArray = Object.values(userAnswer);
-  //   const result = [];
-  //   for (let i = 0; i < userAnswersArray.length; i += 1) {
-  //     result[i] = {
-  //       answer: userAnswersArray[i],
-  //       isCorrect:
-  //         userAnswersArray[i] === ex.questions[currentQuestionIdx].answers[i],
-  //     };
-  //   }
-  //   return result;
-  // };
+  const onSubmitQuestionAnswer = (submittedAnswer) => {
+    setAnswers(usersAnswers.concat([submittedAnswer]));
 
-  // const checkAnswer = (userAnswer) => {
-  //   console.log(userAnswer);
-  //   // const currExerciseType = ex.type;
-  //   // switch (currExerciseType) {
-  //   //   case MULTIPLE_CHOICE:
-  //   //     return {
-  //   //       answer: userAnswer,
-  //   //       isCorrect: userAnswer === ex.questions[currentQuestionIdx].answer,
-  //   //     };
-  //   //   case TYPE_IN_SENTENCE:
-  //   //     return parseTypeInAnswer(userAnswer);
-  //   //   default:
-  //   //     return null;
-  //   // }
-  // };
-
-  const onSubmitQuestionAnswer = () => {
-    console.log("submit");
-    // const userAnswer = "";
-    // const checkedAnswer = checkAnswer(userAnswer);
-    // if (ex.type === TYPE_IN_SENTENCE) {
-    //   setAnswers(answers.concat([checkedAnswer]));
-    // } else {
-    //   setAnswers(answers.concat(checkedAnswer));
-    // }
     if (currentQuestionIdx < ex.questions.length - 1) {
+      // show next question
       setCurrentQuestionIdx(currentQuestionIdx + 1);
-    } else {
-      onSubmitAnswers();
     }
   };
 
-  // const exerciseHead = () => {
-  //   return (
-  //     <>
-  //       <p>
-  //         Question {currentQuestionIdx + 1} out of {ex.questions.length}
-  //       </p>
-  //       {ex.task}
-  //       <br />
-  //     </>
-  //   );
-  // };
-
   return (
     <>
-      <h1>Exercise</h1>
+      <p>
+        Question {currentQuestionIdx + 1} out of {ex.questions.length}
+      </p>
       <Question
         questionType={ex.type}
         questionContent={ex.questions[currentQuestionIdx]}
@@ -100,10 +49,12 @@ Exercise.propTypes = {
     type: PropTypes.string.isRequired,
     questions: PropTypes.arrayOf(
       PropTypes.oneOfType([
+        // multiple choice question
         PropTypes.shape({
           answer: PropTypes.number,
           choices: PropTypes.arrayOf(PropTypes.string),
         }),
+        // type-in question
         PropTypes.shape({
           answers: PropTypes.arrayOf(PropTypes.string),
           sentences: PropTypes.arrayOf(

@@ -1,28 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Sentence from "./Sentence";
+import TypeInParagraph from "./TypeInParagraph";
 
 const TypeInQuestion = ({ content, onSubmitAnswer }) => {
   const onInputChanged = (e) => {
     e.preventDefault();
-    console.log(e.target.field0.value);
-    onSubmitAnswer();
+
+    const amountInputs = content.sentences.length;
+    const checkedAnswers = [];
+
+    for (let i = 0; i < amountInputs; i += 1) {
+      const usersAnswer = e.target[`input${i}`].value;
+
+      checkedAnswers[i] = {
+        answer: usersAnswer,
+        isCorrect: usersAnswer === content.answers[i],
+      };
+    }
+    onSubmitAnswer(checkedAnswers);
   };
 
   return (
     <form onSubmit={onInputChanged}>
-      {content.sentences.map((s, i) => (
-        <Sentence
-          key={s.hint}
-          pre={s.pre}
-          hint={s.hint}
-          post={s.post}
-          name={`field${i}`}
-        />
-      ))}
-
-      <button type="submit">submit</button>
+      <div>
+        {content.sentences.map((s, i) => (
+          <TypeInParagraph
+            key={s.hint}
+            pre={s.pre}
+            hint={s.hint}
+            post={s.post}
+            name={`input${i}`}
+          />
+        ))}
+      </div>
+      <button type="submit">Submit answer</button>
     </form>
   );
 };
