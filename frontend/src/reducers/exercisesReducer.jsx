@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-// import { useLocation } from "react-router-dom";
-
-import Exercise from "./Exercise";
-import ExerciseResults from "./ExerciseResults";
+import { createSlice } from "@reduxjs/toolkit";
 
 const exercises = [
   {
@@ -107,48 +103,23 @@ const exercises = [
   },
 ];
 
-const Exercises = () => {
-  // const { state } = useLocation();
-  // onst { exId } = state;
+const exercisesSlice = createSlice({
+  name: "exercises",
+  initialState: exercises,
+  reducers: {
+    getExercisesTypes(state, action) {
+      const content = action.payload;
+      return { gg: state, ggs: content };
+    },
+  },
+});
 
-  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(0);
+export const { getExercisesTypes } = exercisesSlice.actions;
 
-  const [allFinished, setAllFinished] = useState(false);
-  const [usersAnswers, setUsersAnswers] = useState([]);
-
-  const nextStep = () => {
-    if (currentExerciseIdx < exercises.length - 1) {
-      setCurrentExerciseIdx(currentExerciseIdx + 1);
-    } else {
-      setAllFinished(true);
-    }
+export const getExerciseTypeList = (a) => {
+  return (dispatch) => {
+    dispatch(getExercisesTypes(a));
   };
-
-  // logic for saving answers from user
-  const onSubmitAnswers = (data) => {
-    setUsersAnswers(usersAnswers.concat([data]));
-
-    nextStep();
-  };
-
-  return (
-    <>
-      {allFinished ? (
-        <ExerciseResults results={usersAnswers} exercises={exercises} />
-      ) : (
-        <>
-          <h1>Exercises</h1>
-          Exercise {currentExerciseIdx + 1}
-          <Exercise
-            key={currentExerciseIdx}
-            ex={exercises[currentExerciseIdx]}
-            onSubmitAnswers={onSubmitAnswers}
-          />
-        </>
-      )}
-      <br />
-    </>
-  );
 };
 
-export default Exercises;
+export default exercisesSlice.reducer;

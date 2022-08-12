@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Resources from "./pages/Resources";
 import Dictionary from "./pages/Dictionary";
 import PresentTenses from "./pages/PresentTenses";
-import Exercises from "./pages/Exercises";
+import Exercises from "./pages/Exercises/Exercises";
 
 const App = () => {
   return (
