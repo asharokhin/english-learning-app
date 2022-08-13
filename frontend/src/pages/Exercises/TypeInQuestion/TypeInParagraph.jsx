@@ -1,10 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import { useDispatch } from "react-redux";
 
 const TypeInParagraph = ({ pre, post, hint, name }) => {
-  // const dispatch = useDispatch();
-
   return (
     <>
       <span>{`${pre} `}</span>
@@ -20,7 +17,6 @@ TypeInParagraph.propTypes = {
   post: PropTypes.string.isRequired,
   hint: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  // idx: PropTypes.number.isRequired,
 };
 
 export default TypeInParagraph;

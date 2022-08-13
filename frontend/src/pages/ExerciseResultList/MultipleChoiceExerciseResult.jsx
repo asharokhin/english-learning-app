@@ -5,16 +5,16 @@ import MultChoiceQuestionRes from "./MultChoiceQuestionRes";
 
 const MultipleChoiceExerciseResult = ({ task, questions, usersAnswers }) => {
   return (
-    <>
-      <div>{task}</div>
+    <li>
+      <span>{task}</span>
       <ol>
         {questions.map((q, i) => (
-          <li key={q}>
+          <li key={q.choices[i]}>
             <MultChoiceQuestionRes question={q} userAnswer={usersAnswers[i]} />
           </li>
         ))}
       </ol>
-    </>
+    </li>
   );
 };
 
@@ -27,7 +27,6 @@ const mapStateToProps = (state, { exerciseIndex }) => {
 };
 
 MultipleChoiceExerciseResult.propTypes = {
-  // exerciseIndex: PropTypes.number.isRequired,
   task: PropTypes.string.isRequired,
   questions: PropTypes.arrayOf(
     PropTypes.shape({

@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const usersAnswers = [
-  [{ answer: 0, isCorrect: false }],
+  [
+    { answer: 0, isCorrect: false },
+    { answer: 0, isCorrect: true },
+  ],
   [
     [
       {

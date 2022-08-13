@@ -13,13 +13,13 @@ const exercises = [
         ],
         answer: 1,
       },
-      //     // {
-      //     //   choices: [
-      //     //     "Megan goes to Hong Kong every January.",
-      //     //     "Megan's going to Hong Kong every January.",
-      //     //   ],
-      //     //   answer: 0,
-      //     // },
+      {
+        choices: [
+          "Megan goes to Hong Kong every January.",
+          "Megan's going to Hong Kong every January.",
+        ],
+        answer: 0,
+      },
       //     // {
       //     //   choices: [
       //     //     "I don't have enough money for a long holiday this year.",
