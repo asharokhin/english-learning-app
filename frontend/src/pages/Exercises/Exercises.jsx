@@ -63,11 +63,11 @@ const exercises = [
         sentences: [
           {
             pre: "My father",
+            answer: "knows",
             hint: "know",
             post: "all about mending cars, but nothing about bicycles.",
           },
         ],
-        answers: ["knows"],
       },
       // {
       //   sentence: "This pie {{c1:smells}} (smell) a bit odd. What's in it?",
@@ -87,21 +87,136 @@ const exercises = [
         sentences: [
           {
             pre: "Who",
+            answer: "is",
             hint: "be",
             post: "that man?",
           },
           {
             pre: "Why",
+            answer: "is your sister being",
             hint: "your sister / be",
             post: "so rude to him?",
           },
           {
             pre: "She",
+            answer: "has",
             hint: "have",
             post: "such beautiful manners normally.",
           },
         ],
-        answers: ["is", "is your sister", "has"],
+      },
+    ],
+  },
+  {
+    id: "pt_2",
+    task: "Fill in the gaps with the present simple or present continuous form of the verbs.",
+    type: "type_in_dialogue",
+    questions: [
+      {
+        lines: [
+          {
+            character: "Alex",
+            sentences: [
+              {
+                pre: "Why",
+                answer: "are you wearing",
+                hint: "you / wear",
+                post: "my coat?",
+              },
+            ],
+          },
+          {
+            character: "Ben",
+            sentences: [
+              {
+                pre: "Oh, I'm sorry. It",
+                answer: "looks",
+                hint: "look",
+                post: "like mine in this light.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        lines: [
+          {
+            character: "Carl",
+            sentences: [
+              {
+                pre: "I",
+                answer: "have",
+                hint: "have",
+                post: "no idea what this sentence",
+              },
+              {
+                answer: "means",
+                hint: "mean",
+                post: "Can you translate it?",
+              },
+            ],
+          },
+          {
+            character: "Donna",
+            sentences: [
+              {
+                pre: "No, sorry. I",
+                answer: "don't understand",
+                hint: "not understand",
+                post: "it either.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        lines: [
+          {
+            character: "Gina",
+            sentences: [
+              {
+                pre: "What",
+                answer: "are you doing",
+                hint: "you / do",
+                post: "in the kitchen?",
+              },
+              {
+                pre: "Our guests",
+                answer: "are waiting",
+                hint: "wait",
+                post: "for their dessert, and you",
+              },
+              {
+                answer: "are getting",
+                hint: "get",
+                post: "in my way!",
+              },
+            ],
+          },
+          {
+            character: "Hamid",
+            sentences: [
+              {
+                pre: "I just",
+                answer: "want",
+                hint: "want",
+                post: "to be somewhere quiet for a while.",
+              },
+              {
+                pre: "Everyone",
+                answer: "is being",
+                hint: "be",
+                post: "so noisy this evening.",
+              },
+              {
+                pre: "I",
+                answer: "don't know",
+                hint: "not know",
+                post: "why - it's very unusual!",
+              },
+            ],
+          },
+        ],
       },
     ],
   },
@@ -131,12 +246,97 @@ const r = [
       },
     ],
   ],
+  // exercise
+  [
+    // question
+    [
+      // line
+      [
+        // user's answer
+        {
+          answer: "are you wearing",
+          isCorrect: true,
+        },
+      ],
+      // line
+      [
+        // user's answer
+        {
+          answer: "looks",
+          isCorrect: true,
+        },
+      ],
+    ],
+    // question
+    [
+      // line
+      [
+        // user's answer
+        {
+          answer: "have",
+          isCorrect: true,
+        },
+        // user's answer
+        {
+          answer: "mean",
+          isCorrect: false,
+        },
+      ],
+      // line
+      [
+        // user's answer
+        {
+          answer: "don't",
+          isCorrect: false,
+        },
+      ],
+    ],
+    // question
+    [
+      // line
+      [
+        // user's answer
+        {
+          answer: "are you doing",
+          isCorrect: true,
+        },
+        // user's answer
+        {
+          answer: "are waiting",
+          isCorrect: true,
+        },
+        // user's answer
+        {
+          answer: "are getting",
+          isCorrect: true,
+        },
+      ],
+      // line
+      [
+        // user's answer
+        {
+          answer: "want",
+          isCorrect: true,
+        },
+        // user's answer
+        {
+          answer: "are",
+          isCorrect: false,
+        },
+        // user's answer
+        {
+          answer: "don't",
+          isCorrect: false,
+        },
+      ],
+    ],
+  ],
 ];
 const Exercises = () => {
   // const { state } = useLocation();
   // onst { exId } = state;
 
-  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(0);
+  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(2);
 
   const [allFinished, setAllFinished] = useState(true);
   const [usersAnswers, setUsersAnswers] = useState(r);
@@ -152,7 +352,7 @@ const Exercises = () => {
   // logic for saving answers from user
   const onSubmitAnswers = (data) => {
     setUsersAnswers(usersAnswers.concat([data]));
-
+    console.log("submitted", data);
     nextStep();
   };
 
@@ -163,7 +363,8 @@ const Exercises = () => {
       ) : (
         <>
           <h1>Exercises</h1>
-          Exercise {currentExerciseIdx + 1}
+          <h3>Exercise {currentExerciseIdx + 1}</h3>
+          <p>{exercises[currentExerciseIdx].task}</p>
           <Exercise
             key={currentExerciseIdx}
             ex={exercises[currentExerciseIdx]}

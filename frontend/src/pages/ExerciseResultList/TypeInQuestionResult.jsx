@@ -9,7 +9,7 @@ const TypeInQuestionResult = ({ question, usersAnswers, questionIndex }) => {
     <div>
       {sentences.map((s, i) => (
         <TypeInSentenceResult
-          key={s.pre}
+          key={s.answer}
           sentence={s}
           usersAnswer={usersQuestionAnswers[i]}
         />

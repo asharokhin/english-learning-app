@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./TypeInSentenceResult.module.css";
 
-const TypeInExerciseResult = ({ sentence, usersAnswer }) => {
+const TypeInSentenceResult = ({ sentence, usersAnswer }) => {
   const { pre, post } = sentence;
   const { answer, isCorrect } = usersAnswer;
   return (
@@ -16,9 +16,9 @@ const TypeInExerciseResult = ({ sentence, usersAnswer }) => {
   );
 };
 
-TypeInExerciseResult.propTypes = {
+TypeInSentenceResult.propTypes = {
   sentence: PropTypes.shape({
-    pre: PropTypes.string.isRequired,
+    pre: PropTypes.string,
     post: PropTypes.string.isRequired,
     hint: PropTypes.string.isRequired,
   }).isRequired,
@@ -28,4 +28,4 @@ TypeInExerciseResult.propTypes = {
   }).isRequired,
 };
 
-export default TypeInExerciseResult;
+export default TypeInSentenceResult;

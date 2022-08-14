@@ -9,7 +9,7 @@ const TypeInExerciseResult = ({ task, questions, usersAnswers }) => {
       <span>{task}</span>
       <ol>
         {questions.map((q, i) => (
-          <li key={q.answers}>
+          <li key={q.sentences}>
             <TypeInQuestionResult
               question={q}
               usersAnswers={usersAnswers}
@@ -31,10 +31,8 @@ const mapStateToProps = (state, { exerciseIndex }) => {
 };
 
 TypeInExerciseResult.propTypes = {
-  task: PropTypes.string.isRequired,
   questions: PropTypes.arrayOf(
     PropTypes.shape({
-      answers: PropTypes.arrayOf(PropTypes.string.isRequired),
       sentences: PropTypes.arrayOf(
         PropTypes.shape({
           pre: PropTypes.string.isRequired,
@@ -44,6 +42,7 @@ TypeInExerciseResult.propTypes = {
       ).isRequired,
     })
   ).isRequired,
+  task: PropTypes.string.isRequired,
   usersAnswers: PropTypes.arrayOf(
     PropTypes.arrayOf(
       PropTypes.shape({

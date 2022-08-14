@@ -35,9 +35,6 @@ const Exercise = ({ ex, onSubmitAnswers }) => {
         questionContent={ex.questions[currentQuestionIdx]}
         onSubmitQuestionAnswer={onSubmitQuestionAnswer}
       />
-      <button type="button" onClick={onSubmitQuestionAnswer}>
-        Button answer
-      </button>
     </>
   );
 };
@@ -56,12 +53,12 @@ Exercise.propTypes = {
         }),
         // type-in question
         PropTypes.shape({
-          answers: PropTypes.arrayOf(PropTypes.string),
           sentences: PropTypes.arrayOf(
             PropTypes.shape({
               pre: PropTypes.string,
               post: PropTypes.string,
               hint: PropTypes.string,
+              answer: PropTypes.string,
             })
           ),
         }),

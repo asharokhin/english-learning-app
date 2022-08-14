@@ -7,16 +7,22 @@ const TypeInParagraph = ({ pre, post, hint, name }) => {
       <span>{`${pre} `}</span>
       <input type="text" name={name} required />
       <em>{` (${hint}) `}</em>
-      <span>{` ${post}`}</span>
+      <span>{` ${post} `}</span>
     </>
   );
 };
 
 TypeInParagraph.propTypes = {
-  pre: PropTypes.string.isRequired,
-  post: PropTypes.string.isRequired,
-  hint: PropTypes.string.isRequired,
+  pre: PropTypes.string,
+  post: PropTypes.string,
+  hint: PropTypes.string,
   name: PropTypes.string.isRequired,
+};
+
+TypeInParagraph.defaultProps = {
+  pre: "",
+  post: "",
+  hint: "",
 };
 
 export default TypeInParagraph;

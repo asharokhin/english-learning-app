@@ -15,7 +15,7 @@ const TypeInQuestion = ({ content, onSubmitAnswer }) => {
 
       checkedAnswers[i] = {
         answer: usersAnswer,
-        isCorrect: usersAnswer === content.answers[i],
+        isCorrect: usersAnswer === content.sentences[i].answer,
       };
     }
     onSubmitAnswer(checkedAnswers);
@@ -41,10 +41,10 @@ const TypeInQuestion = ({ content, onSubmitAnswer }) => {
 
 TypeInQuestion.propTypes = {
   content: PropTypes.shape({
-    answers: PropTypes.arrayOf(PropTypes.string),
     sentences: PropTypes.arrayOf(
       PropTypes.shape({
         pre: PropTypes.string,
+        answer: PropTypes.string,
         post: PropTypes.string,
         hint: PropTypes.string,
       })

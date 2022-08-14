@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 
 import MultipleChoiceQuestion from "./MultipleChoiceQuestion/MultipleChoiceQuestion";
 import TypeInQuestion from "./TypeInQuestion/TypeInQuestion";
+import TypeInDialogue from "./TypeInDialogue";
 
 const TYPE_IN_SENTENCE = "type_in_sentence";
 const MULTIPLE_CHOICE = "multiple_choice";
+const TYPE_IN_DIALOGUE = "type_in_dialogue";
 
 const Question = ({
   questionType,
@@ -23,6 +25,13 @@ const Question = ({
     case TYPE_IN_SENTENCE:
       return (
         <TypeInQuestion
+          content={questionContent}
+          onSubmitAnswer={onSubmitQuestionAnswer}
+        />
+      );
+    case TYPE_IN_DIALOGUE:
+      return (
+        <TypeInDialogue
           content={questionContent}
           onSubmitAnswer={onSubmitQuestionAnswer}
         />
@@ -46,6 +55,7 @@ Question.propTypes = {
           pre: PropTypes.string,
           post: PropTypes.string,
           hint: PropTypes.string,
+          answer: PropTypes.string,
         })
       ),
     }),
