@@ -1,18 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import TypeInDialogueLine from "./TypeInDialogueLine";
+import TypeInDialogueQuestionResults from "./TypeInDialogueQuestionResults";
 
-const TypeInDialogueResult = ({ questions, task, usersAnswers }) => {
-  console.log(questions);
-
+const TypeInDialogueResults = ({ questions, task, usersAnswers }) => {
   return (
     <li>
       <span>{task}</span>
       <ol>
         {questions.map((q, i) => (
-          <TypeInDialogueLine
-            key={q.lines[0].character}
+          <TypeInDialogueQuestionResults
+            key={usersAnswers[i]}
             lines={q.lines}
             usersAnswers={usersAnswers[i]}
           />
@@ -30,7 +28,7 @@ const mapStateToProps = (state, { exerciseIndex }) => {
   };
 };
 
-TypeInDialogueResult.propTypes = {
+TypeInDialogueResults.propTypes = {
   questions: PropTypes.arrayOf(
     PropTypes.shape({
       lines: PropTypes.arrayOf(
@@ -60,15 +58,4 @@ TypeInDialogueResult.propTypes = {
   ).isRequired,
 };
 
-export default connect(mapStateToProps)(TypeInDialogueResult);
-/*
-{questions.map((q, i) => (
-          <li key={q.sentences}>
-            <TypeInQuestionResult
-              question={q}
-              usersAnswers={usersAnswers}
-              questionIndex={i}
-            />
-          </li>
-        ))}
-*/
+export default connect(mapStateToProps)(TypeInDialogueResults);

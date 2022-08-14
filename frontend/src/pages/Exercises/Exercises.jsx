@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import * as appConstants from "../../constants";
 // import { useLocation } from "react-router-dom";
 
 import Exercise from "./Exercise";
-import ExerciseResultList from "../ExerciseResultList/ExerciseResultList";
+import ExercisesResultList from "../ExerciseResultList/ExercisesResultList";
 
 const exercises = [
   {
     id: "pt",
     task: "Choose the correct sentence from each pair.",
-    type: "multiple_choice",
+    type: appConstants.MULTIPLE_CHOICE,
     questions: [
       {
         choices: [
@@ -57,7 +58,7 @@ const exercises = [
   {
     id: "pt_2",
     task: "Complete these sentences with the present simple or present continuous form of the verbs.",
-    type: "type_in_sentence",
+    type: appConstants.TYPE_IN_SENTENCE,
     questions: [
       {
         sentences: [
@@ -110,7 +111,7 @@ const exercises = [
   {
     id: "pt_2",
     task: "Fill in the gaps with the present simple or present continuous form of the verbs.",
-    type: "type_in_dialogue",
+    type: appConstants.TYPE_IN_DIALOGUE,
     questions: [
       {
         lines: [
@@ -359,7 +360,7 @@ const Exercises = () => {
   return (
     <>
       {allFinished ? (
-        <ExerciseResultList />
+        <ExercisesResultList />
       ) : (
         <>
           <h1>Exercises</h1>

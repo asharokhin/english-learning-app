@@ -4,10 +4,7 @@ import PropTypes from "prop-types";
 import MultipleChoiceQuestion from "./MultipleChoiceQuestion/MultipleChoiceQuestion";
 import TypeInQuestion from "./TypeInQuestion/TypeInQuestion";
 import TypeInDialogue from "./TypeInDialogue";
-
-const TYPE_IN_SENTENCE = "type_in_sentence";
-const MULTIPLE_CHOICE = "multiple_choice";
-const TYPE_IN_DIALOGUE = "type_in_dialogue";
+import * as appConstants from "../../constants";
 
 const Question = ({
   questionType,
@@ -15,21 +12,21 @@ const Question = ({
   onSubmitQuestionAnswer,
 }) => {
   switch (questionType) {
-    case MULTIPLE_CHOICE:
+    case appConstants.MULTIPLE_CHOICE:
       return (
         <MultipleChoiceQuestion
           content={questionContent}
           onSubmitAnswer={onSubmitQuestionAnswer}
         />
       );
-    case TYPE_IN_SENTENCE:
+    case appConstants.TYPE_IN_SENTENCE:
       return (
         <TypeInQuestion
           content={questionContent}
           onSubmitAnswer={onSubmitQuestionAnswer}
         />
       );
-    case TYPE_IN_DIALOGUE:
+    case appConstants.TYPE_IN_DIALOGUE:
       return (
         <TypeInDialogue
           content={questionContent}

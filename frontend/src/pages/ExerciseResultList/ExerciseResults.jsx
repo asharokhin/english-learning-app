@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MultipleChoiceExerciseResult from "./MultipleChoiceExerciseResult";
-import TypeInExerciseResult from "./TypeInExerciseResult";
-import TypeInDialogueResult from "./TypeInDialogueResult";
+import MultipleChoiceExerciseResults from "./MultipleChoiceExerciseResults";
+import TypeInExerciseResults from "./TypeInExerciseResult";
+import TypeInDialogueResults from "./TypeInDialogueResults";
+import * as appConstants from "../../constants";
 
 const ExerciseResults = ({ exerciseType, id }) => {
   switch (exerciseType) {
-    case "multiple_choice":
-      return <MultipleChoiceExerciseResult exerciseIndex={id} />;
-    case "type_in_sentence":
-      return <TypeInExerciseResult exerciseIndex={id} />;
-    case "type_in_dialogue":
-      return <TypeInDialogueResult exerciseIndex={id} />;
+    case appConstants.MULTIPLE_CHOICE:
+      return <MultipleChoiceExerciseResults exerciseIndex={id} />;
+    case appConstants.TYPE_IN_SENTENCE:
+      return <TypeInExerciseResults exerciseIndex={id} />;
+    case appConstants.TYPE_IN_DIALOGUE:
+      return <TypeInDialogueResults exerciseIndex={id} />;
     default:
       return null;
   }
