@@ -12,7 +12,8 @@ const TypeInDialogueQuestionResults = ({ lines, usersAnswers }) => {
           {l.sentences.map((s, j) => (
             <TypeInSentenceResult
               key={s.post}
-              sentence={s}
+              pre={s.pre}
+              post={s.post}
               usersAnswer={usersAnswers[i][j]}
             />
           ))}

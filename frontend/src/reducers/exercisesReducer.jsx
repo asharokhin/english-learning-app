@@ -149,7 +149,7 @@ const exercises = [
               {
                 answer: "means",
                 hint: "mean",
-                post: "Can you translate it?",
+                post: ". Can you translate it?",
               },
             ],
           },

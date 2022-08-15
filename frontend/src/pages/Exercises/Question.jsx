@@ -5,6 +5,7 @@ import MultipleChoiceQuestion from "./MultipleChoiceQuestion/MultipleChoiceQuest
 import TypeInQuestion from "./TypeInQuestion/TypeInQuestion";
 import TypeInDialogue from "./TypeInDialogue";
 import * as appConstants from "../../constants";
+import CompleteText from "./CompleteText";
 
 const Question = ({
   questionType,
@@ -29,6 +30,13 @@ const Question = ({
     case appConstants.TYPE_IN_DIALOGUE:
       return (
         <TypeInDialogue
+          content={questionContent}
+          onSubmitAnswer={onSubmitQuestionAnswer}
+        />
+      );
+    case appConstants.COMPLETE_THE_TEXT:
+      return (
+        <CompleteText
           content={questionContent}
           onSubmitAnswer={onSubmitQuestionAnswer}
         />
