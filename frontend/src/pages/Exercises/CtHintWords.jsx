@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from "react";
+import PropTypes from "prop-types";
 
 const CtHintWords = ({ words }) => {
   return (
@@ -11,6 +11,10 @@ const CtHintWords = ({ words }) => {
       ))}
     </div>
   );
+};
+
+CtHintWords.propTypes = {
+  words: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default CtHintWords;

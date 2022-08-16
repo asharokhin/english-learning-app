@@ -6,6 +6,8 @@ import TypeInQuestion from "./TypeInQuestion/TypeInQuestion";
 import TypeInDialogue from "./TypeInDialogue";
 import * as appConstants from "../../constants";
 import CompleteText from "./CompleteText";
+import MciQuestion from "./MciQuestion";
+import ListeningMultipleChoice from "./ListeningMultipleChoice";
 
 const Question = ({
   questionType,
@@ -37,6 +39,20 @@ const Question = ({
     case appConstants.COMPLETE_THE_TEXT:
       return (
         <CompleteText
+          content={questionContent}
+          onSubmitAnswer={onSubmitQuestionAnswer}
+        />
+      );
+    case appConstants.MULTIPLE_CHOICE_INLINE:
+      return (
+        <MciQuestion
+          content={questionContent}
+          onSubmitAnswer={onSubmitQuestionAnswer}
+        />
+      );
+    case appConstants.LISTENING_MULTIPLE_CHOICE:
+      return (
+        <ListeningMultipleChoice
           content={questionContent}
           onSubmitAnswer={onSubmitQuestionAnswer}
         />

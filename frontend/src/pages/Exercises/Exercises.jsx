@@ -260,7 +260,7 @@ const exercises = [
           [
             {
               pre: "How are you? We're fine. Our trip round the States",
-              answer: "is going'",
+              answer: "is going",
               post: "well and",
               num: "1",
             },
@@ -389,6 +389,124 @@ const exercises = [
       },
     ],
   },
+  {
+    id: "pt",
+    task: "Choose the correct verb forms.",
+    type: appConstants.MULTIPLE_CHOICE_INLINE,
+    questions: [
+      {
+        pre: "I",
+        choices: ["want", "am wanting"],
+        answer: 0,
+        post: "to help out at the camp this summer.",
+      },
+      {
+        pre: "Most Spanish companies",
+        choices: ["belong", "are beloging"],
+        answer: 0,
+        post: "to multinationals nowadays.",
+      },
+      {
+        pre: "I",
+        choices: ["think", "am thinking"],
+        answer: 1,
+        post: "about interviewing my grandfather's friend, who collects vintage cars.",
+      },
+      {
+        pre: "My father went to that university, so he",
+        choices: ["knows", "is knowing"],
+        answer: 0,
+        post: "all about it.",
+      },
+      {
+        pre: "Ned",
+        choices: ["has", "is having"],
+        answer: 1,
+        post: "a lot of problems with his teacher at the moment.",
+      },
+      {
+        pre: "Every town",
+        choices: ["needs", "is needing"],
+        answer: 0,
+        post: "a library, even though everyone has the internet nowadays.",
+      },
+    ],
+  },
+  {
+    id: "pt",
+    task: "You will hear an interview with a man called Martin Holloway who is a sound engineer. For questions 1-7, choose the best answer (A, B or C).",
+    type: appConstants.LISTENING_MULTIPLE_CHOICE,
+    questions: [
+      [
+        {
+          question:
+            "The mistake people make about sound engineers is to think that",
+          choices: [
+            "they spend most o their time working indoors.",
+            "their job is the same as that of a disc jockey.",
+            "they are responsible for the quality of the music.",
+          ],
+          answerIndex: 0,
+        },
+        {
+          question: "What does Martin say helped him to begin earning money?",
+          choices: [
+            "the course he did",
+            "some of the bands he played in",
+            "some people he met",
+          ],
+          answerIndex: 0,
+        },
+        {
+          question: "Martin first gets involved in a project",
+          choices: [
+            "as soon as the band is booked.",
+            "when he visits the venue.",
+            "while the band is rehearsing.",
+          ],
+          answerIndex: 0,
+        },
+        {
+          question: "What does Martin often find during a show?",
+          choices: [
+            "There are problems with the equipment.",
+            "Very little goes wrong for him.",
+            "The performers don't communicate with him.",
+          ],
+          answerIndex: 0,
+        },
+        {
+          question:
+            "What change in equipment has Martin appreciated the most over the years?",
+          choices: [
+            "It is more portable.",
+            "The sound quality is better.",
+            "It is less expensive.",
+          ],
+          answerIndex: 0,
+        },
+        {
+          question:
+            "According to Martin, what is the most important quality in a sound engineer?",
+          choices: [
+            "some musical ability",
+            "good communication skills",
+            "practical technical knowledge",
+          ],
+          answerIndex: 2,
+        },
+        {
+          question: "What does Martin find most difficult about his job?",
+          choices: [
+            "working in difficult environments",
+            "being away for periods of time",
+            "waiting fo things to happen",
+          ],
+          answerIndex: 2,
+        },
+      ],
+    ],
+  },
 ];
 
 const r = [
@@ -505,7 +623,7 @@ const Exercises = () => {
   // const { state } = useLocation();
   // onst { exId } = state;
 
-  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(3);
+  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(5);
 
   const [allFinished, setAllFinished] = useState(false);
   const [usersAnswers, setUsersAnswers] = useState(r);

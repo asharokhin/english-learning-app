@@ -10,7 +10,9 @@ const ExercisesResultList = ({ exerciseTypes }) => {
       <p>All exercises are done.</p>
       <ol>
         {exerciseTypes.map((t, i) => (
-          <ExerciseResults key={t} exerciseType={t} id={i} />
+          <li key={t}>
+            <ExerciseResults exerciseType={t} id={i} />
+          </li>
         ))}
       </ol>
     </>

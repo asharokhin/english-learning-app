@@ -5,7 +5,7 @@ import MultChoiceQuestionRes from "./MultChoiceQuestionRes";
 
 const MultipleChoiceExerciseResult = ({ task, questions, usersAnswers }) => {
   return (
-    <li>
+    <>
       <span>{task}</span>
       <ol>
         {questions.map((q, i) => (
@@ -14,7 +14,7 @@ const MultipleChoiceExerciseResult = ({ task, questions, usersAnswers }) => {
           </li>
         ))}
       </ol>
-    </li>
+    </>
   );
 };
 

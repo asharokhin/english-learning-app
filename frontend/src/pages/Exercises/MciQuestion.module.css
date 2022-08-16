@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box; 
+  align-items: center; 
+}
+
+.radioToolbar input[type="radio"] {
+  display: none;
+}
+
+.radioToolbar label {
+  display: inline-block;
+  background-color: #ddd;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.radioToolbar input[type="radio"]:checked+label {
+  background-color: #bbb;
+  text-decoration: underline;
+}

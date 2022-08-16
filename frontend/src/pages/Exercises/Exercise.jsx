@@ -31,6 +31,7 @@ const Exercise = ({ ex, onSubmitAnswers }) => {
         Question {currentQuestionIdx + 1} out of {ex.questions.length}
       </p>
       <Question
+        key={currentQuestionIdx}
         questionType={ex.type}
         questionContent={ex.questions[currentQuestionIdx]}
         onSubmitQuestionAnswer={onSubmitQuestionAnswer}

@@ -112,6 +112,114 @@ const usersAnswers = [
       ],
     ],
   ],
+  [
+    {
+      answer: "is going",
+      isCorrect: true,
+    },
+    {
+      answer: "are enjoying",
+      isCorrect: true,
+    },
+    {
+      answer: "cost",
+      isCorrect: true,
+    },
+    {
+      answer: "are staying",
+      isCorrect: true,
+    },
+    {
+      answer: "are paying",
+      isCorrect: true,
+    },
+    {
+      answer: "don't like",
+      isCorrect: true,
+    },
+    {
+      answer: "serve",
+      isCorrect: true,
+    },
+    {
+      answer: "don't eat",
+      isCorrect: true,
+    },
+    {
+      answer: "are not",
+      isCorrect: true,
+    },
+    {
+      answer: "are",
+      isCorrect: true,
+    },
+    {
+      answer: "have",
+      isCorrect: false,
+    },
+    {
+      answer: "are seeing",
+      isCorrect: false,
+    },
+    {
+      answer: "love",
+      isCorrect: true,
+    },
+    {
+      answer: "smile",
+      isCorrect: true,
+    },
+    {
+      answer: "wave",
+      isCorrect: true,
+    },
+    {
+      answer: "says",
+      isCorrect: true,
+    },
+    {
+      answer: "is always showing",
+      isCorrect: true,
+    },
+    {
+      answer: "came",
+      isCorrect: true,
+    },
+    {
+      answer: "realise",
+      isCorrect: true,
+    },
+    {
+      answer: "are taking",
+      isCorrect: true,
+    },
+  ],
+  [
+    {
+      answer: 0,
+      isCorrect: true,
+    },
+    {
+      answer: 1,
+      isCorrect: false,
+    },
+    {
+      answer: 0,
+      isCorrect: false,
+    },
+    {
+      answer: 0,
+      isCorrect: true,
+    },
+    {
+      answer: 1,
+      isCorrect: true,
+    },
+    {
+      answer: 1,
+      isCorrect: false,
+    },
+  ],
 ];
 
 const usersAnswersSlice = createSlice({

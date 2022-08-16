@@ -4,6 +4,8 @@ import MultipleChoiceExerciseResults from "./MultipleChoiceExerciseResults";
 import TypeInExerciseResults from "./TypeInExerciseResult";
 import TypeInDialogueResults from "./TypeInDialogueResults";
 import * as appConstants from "../../constants";
+import CtResults from "./CtResults";
+import MciResults from "./MciResults";
 
 const ExerciseResults = ({ exerciseType, id }) => {
   switch (exerciseType) {
@@ -13,6 +15,10 @@ const ExerciseResults = ({ exerciseType, id }) => {
       return <TypeInExerciseResults exerciseIndex={id} />;
     case appConstants.TYPE_IN_DIALOGUE:
       return <TypeInDialogueResults exerciseIndex={id} />;
+    case appConstants.COMPLETE_THE_TEXT:
+      return <CtResults exerciseIndex={id} />;
+    case appConstants.MULTIPLE_CHOICE_INLINE:
+      return <MciResults exerciseIndex={id} />;
     default:
       return null;
   }

@@ -5,7 +5,7 @@ import TypeInQuestionResult from "./TypeInQuestionResult";
 
 const TypeInExerciseResult = ({ task, questions, usersAnswers }) => {
   return (
-    <li>
+    <>
       <span>{task}</span>
       <ol>
         {questions.map((q, i) => (
@@ -18,7 +18,7 @@ const TypeInExerciseResult = ({ task, questions, usersAnswers }) => {
           </li>
         ))}
       </ol>
-    </li>
+    </>
   );
 };
 

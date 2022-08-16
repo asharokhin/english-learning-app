@@ -5,7 +5,7 @@ import TypeInDialogueQuestionResults from "./TypeInDialogueQuestionResults";
 
 const TypeInDialogueResults = ({ questions, task, usersAnswers }) => {
   return (
-    <li>
+    <>
       <span>{task}</span>
       <ol>
         {questions.map((q, i) => (
@@ -16,7 +16,7 @@ const TypeInDialogueResults = ({ questions, task, usersAnswers }) => {
           />
         ))}
       </ol>
-    </li>
+    </>
   );
 };
 

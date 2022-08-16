@@ -3,15 +3,8 @@ import PropTypes from "prop-types";
 import CtHintWords from "./CtHintWords";
 import CtParagraph from "./CtParagraph";
 
-const CompleteText = ({ content, onSubmitAnswer, usersAnswers }) => {
+const CompleteText = ({ content, onSubmitAnswer }) => {
   const { paragraphs, textData } = content;
-
-  const exerciseHints = () => {
-    if (usersAnswers === undefined) {
-      return <CtHintWords words={content.words} />;
-    }
-    return null;
-  };
 
   const textHeader = () => {
     if (textData.textType === "email") {
@@ -21,9 +14,6 @@ const CompleteText = ({ content, onSubmitAnswer, usersAnswers }) => {
   };
 
   const textFooter = () => {
-    if (usersAnswers !== undefined) {
-      return null;
-    }
     if (textData.end !== undefined) {
       return <p>{`${textData.end}`}</p>;
     }
@@ -31,21 +21,33 @@ const CompleteText = ({ content, onSubmitAnswer, usersAnswers }) => {
   };
   const onSubmitUsersAnswers = (e) => {
     e.preventDefault();
-    console.log("submit", e.target.input00.value);
+
+    // compare user's answers in inputs with exercise answers
+    const checkedAnswers = [];
+    for (let i = 0; i < paragraphs.length; i += 1) {
+      const sentences = paragraphs[i];
+      for (let j = 0; j < sentences.length; j += 1) {
+        const usersAnswer = e.target[`input${i}${j}`].value;
+        checkedAnswers.push({
+          answer: usersAnswer,
+          isCorrect: usersAnswer === paragraphs[i][j].answer,
+        });
+      }
+    }
+
+    onSubmitAnswer(checkedAnswers);
   };
 
   return (
     <div>
-      {exerciseHints()}
+      <CtHintWords words={content.words} />
       {textHeader()}
       <form onSubmit={onSubmitUsersAnswers}>
         {paragraphs.map((paragraph, i) => (
           <CtParagraph
             key={paragraph[0].answer}
             paragraph={paragraph}
-            onSubmitAnswer={onSubmitAnswer}
             paragraphIdx={i}
-            usersAnswers={usersAnswers}
           />
         ))}
         {textFooter()}
@@ -66,12 +68,10 @@ CompleteText.propTypes = {
     words: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   onSubmitAnswer: PropTypes.func,
-  usersAnswers: PropTypes.shape(),
 };
 
 CompleteText.defaultProps = {
   onSubmitAnswer: undefined,
-  usersAnswers: undefined,
 };
 
 export default CompleteText;
