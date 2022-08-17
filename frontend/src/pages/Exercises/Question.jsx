@@ -8,6 +8,7 @@ import * as appConstants from "../../constants";
 import CompleteText from "./CompleteText";
 import MciQuestion from "./MciQuestion";
 import ListeningMultipleChoice from "./ListeningMultipleChoice";
+import ListeningMci from "./ListeningMci";
 
 const Question = ({
   questionType,
@@ -57,6 +58,13 @@ const Question = ({
           onSubmitAnswer={onSubmitQuestionAnswer}
         />
       );
+    case appConstants.LISTENING_MULTIPLE_CHOICE_INLINE:
+      return (
+        <ListeningMci
+          content={questionContent}
+          onSubmitAnswer={onSubmitQuestionAnswer}
+        />
+      );
     default:
       return null;
   }
@@ -80,6 +88,7 @@ Question.propTypes = {
         })
       ),
     }),
+    PropTypes.arrayOf(PropTypes.shape),
   ]).isRequired,
   onSubmitQuestionAnswer: PropTypes.func.isRequired,
 };

@@ -27,9 +27,15 @@ const Exercise = ({ ex, onSubmitAnswers }) => {
 
   return (
     <>
-      <p>
-        Question {currentQuestionIdx + 1} out of {ex.questions.length}
-      </p>
+      {
+        // Show amount of questions in exercise
+        ex.questions.length > 1 ? (
+          <p>
+            Question {currentQuestionIdx + 1} out of {ex.questions.length}
+          </p>
+        ) : null
+      }
+
       <Question
         key={currentQuestionIdx}
         questionType={ex.type}
@@ -63,6 +69,7 @@ Exercise.propTypes = {
             })
           ),
         }),
+        PropTypes.arrayOf(PropTypes.shape),
       ])
     ),
   }).isRequired,

@@ -6,6 +6,7 @@ import TypeInDialogueResults from "./TypeInDialogueResults";
 import * as appConstants from "../../constants";
 import CtResults from "./CtResults";
 import MciResults from "./MciResults";
+import ListeningMultipleChoiceResults from "./ListeningMultipleChoiceResults";
 
 const ExerciseResults = ({ exerciseType, id }) => {
   switch (exerciseType) {
@@ -19,6 +20,8 @@ const ExerciseResults = ({ exerciseType, id }) => {
       return <CtResults exerciseIndex={id} />;
     case appConstants.MULTIPLE_CHOICE_INLINE:
       return <MciResults exerciseIndex={id} />;
+    case appConstants.LISTENING_MULTIPLE_CHOICE:
+      return <ListeningMultipleChoiceResults exerciseIndex={id} />;
     default:
       return null;
   }

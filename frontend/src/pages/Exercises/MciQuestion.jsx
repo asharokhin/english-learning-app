@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./MciQuestion.module.css";
+import MciSentence from "./MciSentence";
 
 const MciQuestion = ({ content, onSubmitAnswer }) => {
   const [formError, setFormError] = useState(null);
@@ -15,31 +16,16 @@ const MciQuestion = ({ content, onSubmitAnswer }) => {
     });
   };
 
-  const { pre, choices, post } = content;
   return (
     <form
       className={styles.radioToolbar}
       onSubmit={onSaveAnswer}
       onInvalid={() => setFormError(ERROR_TEXT)}
     >
-      <span>{` ${pre} `}</span>
-
-      <input type="radio" name="userChoice" id="radio0" value={0} required />
-      <label htmlFor="radio0">
-        <i>{choices[0]}</i>
-      </label>
-
-      <span>{` / `}</span>
-
-      <input type="radio" name="userChoice" id="radio1" value={1} required />
-      <label htmlFor="radio1">
-        <i>{choices[1]}</i>
-      </label>
-      <span>{` ${post} `}</span>
-      <p>{formError}</p>
+      <MciSentence content={content} name="userChoice" id="radio" />
 
       <br />
-
+      <p>{formError}</p>
       <button type="submit">Answer</button>
     </form>
   );

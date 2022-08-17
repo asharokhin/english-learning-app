@@ -55,18 +55,3 @@ MciResults.propTypes = {
 };
 
 export default connect(mapStateToProps)(MciResults);
-
-/*
-<span className={styles.tooltip}>
-                  <span
-                    className={
-                      usersAnswers[i].isCorrect
-                        ? styles.isCorrect
-                        : styles.isIncorrect
-                    }
-                  >{` ${q.choices[usersAnswers[i].answer]} `}</span>
-                  <span className={styles.tooltiptext}>
-                    {q.choices[q.answer]}
-                  </span>
-                </span>
-*/

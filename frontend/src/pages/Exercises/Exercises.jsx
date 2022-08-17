@@ -509,123 +509,83 @@ const exercises = [
       },
     ],
   },
+  {
+    id: "pt",
+    task: "Here are some extracts from the interview. Choose the present tense that the speaker uses. Listen again to check.",
+    type: appConstants.LISTENING_MULTIPLE_CHOICE_INLINE,
+    questions: [
+      [
+        {
+          pre: "I",
+          choices: ["usually set up", "am usually setting up"],
+          answer: 0,
+          post: "the equipment before the show.",
+        },
+        {
+          pre: "What you",
+          choices: ["hear", "are hearing"],
+          answer: 0,
+          post: "is out of tune.",
+        },
+        {
+          pre: "People sometimes",
+          choices: ["call", "are calling"],
+          answer: 1,
+          post: "me a disc jockey.",
+        },
+        {
+          pre: "This weekend, I",
+          choices: ["work", "am working"],
+          answer: 0,
+          post: "at a music festival.",
+        },
+        {
+          pre: "I mostly",
+          choices: ["work", "am working"],
+          answer: 1,
+          post: "out of doors.",
+        },
+        {
+          pre: "Some people",
+          choices: ["think", "are thinking"],
+          answer: 0,
+          post: "we just turn up on the day.",
+        },
+        {
+          pre: "Everything",
+          choices: ["gets", "is getting"],
+          answer: 0,
+          post: "smaller all the time.",
+        },
+        {
+          pre: "But",
+          choices: ["I always tell", "I'm always telling"],
+          answer: 0,
+          post: "people and they never listen.",
+        },
+        {
+          pre: "They just",
+          choices: ["don't realise", "aren't realising"],
+          answer: 0,
+          post: "that what's crucial is being able to get on with people.",
+        },
+        {
+          pre: "An interest in music",
+          choices: ["means", "is meaning"],
+          answer: 0,
+          post: "it is more enjoyable.",
+        },
+      ],
+    ],
+  },
 ];
 
-const r = [
-  [{ answer: 0, isCorrect: false }],
-  [
-    [
-      {
-        answer: "knows",
-        isCorrect: true,
-      },
-    ],
-    [
-      {
-        answer: "is",
-        isCorrect: true,
-      },
-      {
-        answer: "is",
-        isCorrect: false,
-      },
-      {
-        answer: "has",
-        isCorrect: true,
-      },
-    ],
-  ],
-  // exercise
-  [
-    // question
-    [
-      // line
-      [
-        // user's answer
-        {
-          answer: "are you wearing",
-          isCorrect: true,
-        },
-      ],
-      // line
-      [
-        // user's answer
-        {
-          answer: "looks",
-          isCorrect: true,
-        },
-      ],
-    ],
-    // question
-    [
-      // line
-      [
-        // user's answer
-        {
-          answer: "have",
-          isCorrect: true,
-        },
-        // user's answer
-        {
-          answer: "mean",
-          isCorrect: false,
-        },
-      ],
-      // line
-      [
-        // user's answer
-        {
-          answer: "don't",
-          isCorrect: false,
-        },
-      ],
-    ],
-    // question
-    [
-      // line
-      [
-        // user's answer
-        {
-          answer: "are you doing",
-          isCorrect: true,
-        },
-        // user's answer
-        {
-          answer: "are waiting",
-          isCorrect: true,
-        },
-        // user's answer
-        {
-          answer: "are getting",
-          isCorrect: true,
-        },
-      ],
-      // line
-      [
-        // user's answer
-        {
-          answer: "want",
-          isCorrect: true,
-        },
-        // user's answer
-        {
-          answer: "are",
-          isCorrect: false,
-        },
-        // user's answer
-        {
-          answer: "don't",
-          isCorrect: false,
-        },
-      ],
-    ],
-  ],
-];
+const r = [[{ answer: 0, isCorrect: false }]];
 const Exercises = () => {
   // const { state } = useLocation();
   // onst { exId } = state;
 
-  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(5);
+  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(6);
 
   const [allFinished, setAllFinished] = useState(false);
   const [usersAnswers, setUsersAnswers] = useState(r);

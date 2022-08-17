@@ -220,6 +220,36 @@ const usersAnswers = [
       isCorrect: false,
     },
   ],
+  [
+    {
+      answer: 0,
+      isCorrect: false,
+    },
+    {
+      answer: 1,
+      isCorrect: true,
+    },
+    {
+      answer: 2,
+      isCorrect: false,
+    },
+    {
+      answer: 0,
+      isCorrect: false,
+    },
+    {
+      answer: 1,
+      isCorrect: false,
+    },
+    {
+      answer: 2,
+      isCorrect: false,
+    },
+    {
+      answer: 0,
+      isCorrect: false,
+    },
+  ],
 ];
 
 const usersAnswersSlice = createSlice({
