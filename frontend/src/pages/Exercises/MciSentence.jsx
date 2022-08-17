@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from "react";
+import PropTypes from "prop-types";
 
 const MciSentence = ({ content, name, id }) => {
   const { pre, choices, post } = content;
@@ -22,6 +22,16 @@ const MciSentence = ({ content, name, id }) => {
       <span>{` ${post} `}</span>
     </>
   );
+};
+
+MciSentence.propTypes = {
+  content: PropTypes.shape({
+    pre: PropTypes.string,
+    choices: PropTypes.arrayOf(PropTypes.string),
+    post: PropTypes.string,
+  }).isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default MciSentence;

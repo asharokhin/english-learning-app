@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from "react";
+import PropTypes from "prop-types";
 import MciSentence from "./MciSentence";
 import styles from "./MciQuestion.module.css";
 
@@ -45,6 +45,18 @@ const ListeningMci = ({ content, onSubmitAnswer }) => {
       </form>
     </div>
   );
+};
+
+ListeningMci.propTypes = {
+  content: PropTypes.arrayOf(
+    PropTypes.shape({
+      pre: PropTypes.string,
+      choices: PropTypes.arrayOf(PropTypes.string),
+      answer: PropTypes.number,
+      post: PropTypes.string,
+    })
+  ).isRequired,
+  onSubmitAnswer: PropTypes.func.isRequired,
 };
 
 export default ListeningMci;
