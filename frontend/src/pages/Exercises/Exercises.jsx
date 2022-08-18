@@ -585,7 +585,7 @@ const Exercises = () => {
   // const { state } = useLocation();
   // onst { exId } = state;
 
-  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(6);
+  const [currentExerciseIdx, setCurrentExerciseIdx] = useState(0);
 
   const [allFinished, setAllFinished] = useState(false);
   const [usersAnswers, setUsersAnswers] = useState(r);
