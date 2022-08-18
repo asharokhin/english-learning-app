@@ -7,6 +7,7 @@ import Resources from "./pages/Resources";
 import Dictionary from "./pages/Dictionary";
 import PresentTenses from "./pages/PresentTenses";
 import Exercises from "./pages/Exercises/Exercises";
+import PastTenses from "./pages/PastTenses";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
               <Route index element={<PresentTenses />} />
               <Route path="exercises" element={<Exercises />} />
             </Route>
+            <Route path="past-tense" element={<PastTenses />} />
           </Route>
         </Route>
       </Routes>

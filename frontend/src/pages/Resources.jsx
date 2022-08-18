@@ -24,6 +24,16 @@ const Resources = () => {
               Present simple; present continuous; state verbs; the verb to be
             </td>
           </tr>
+
+          <tr>
+            <td>
+              <Link to="grammar/past-tense">Past tenses</Link>
+            </td>
+            <td>
+              Past simple; past continuous; used to + verb and would + verb;
+              be/get used to + -ing or noun
+            </td>
+          </tr>
         </tbody>
       </table>
     </>
