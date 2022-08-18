@@ -19,8 +19,9 @@ const PresentTenses = () => {
                       className={styles.main__anchor}
                       name="present-simple"
                       href="#present-simple"
+                      content="1"
                     >
-                      1 Present Simple
+                      Present Simple
                     </a>
                   </h2>
                   <table>
@@ -97,7 +98,16 @@ const PresentTenses = () => {
                     </li>
                   </ul>
                   <br />
-                  <h3>2 Present continuous</h3>
+                  <h2>
+                    <a
+                      className={styles.main__anchor}
+                      name="present-continuous"
+                      href="#present-continuous"
+                      content="2"
+                    >
+                      Present continuous
+                    </a>
+                  </h2>
                   <table>
                     <tbody>
                       <tr>
@@ -222,7 +232,16 @@ const PresentTenses = () => {
                       </p>
                     </li>
                   </ul>
-                  <h3>3 State verbs</h3>
+                  <h2>
+                    <a
+                      className={styles.main__anchor}
+                      name="state-verbs"
+                      href="#state-verbs"
+                      content="3"
+                    >
+                      State verbs
+                    </a>
+                  </h2>
                   <p>
                     These verbs are nearly always used in a simple rather than a
                     continuous tense. They are mostly about thoughts, feelings,
@@ -375,9 +394,16 @@ const PresentTenses = () => {
                   <p className={styles.example}>
                     The shop assistant <strong>is weighing</strong> the cheese.
                   </p>
-                  <h3>
-                    4 The verb <em>to be</em>
-                  </h3>
+                  <h2>
+                    <a
+                      className={styles.main__anchor}
+                      name="the-verb-to-be"
+                      href="#the-verb-to-be"
+                      content="4"
+                    >
+                      The verb <em>to be</em>
+                    </a>
+                  </h2>
                   <p>
                     The verb <em>to be</em> is nearly always used in a simple
                     rather than a continuous tense. When it is continuous it

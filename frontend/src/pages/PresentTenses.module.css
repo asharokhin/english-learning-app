@@ -57,35 +57,36 @@ td {
 }
 
 .main__anchor {
+  color: #313130;
+  text-decoration: none;
   outline:0
+ } 
+ .main__anchor:hover {
+  color: #666;
+  text-decoration: underline;
  }
- /* .main__anchor::before {
-  position:absolute;
-  right:100%;
-  width:30px;
-  text-align:left;
-  outline:0;
-  color: red;
-  font-size:90%;
-  line-height:inherit;
-  font-weight:400;
-  opacity:0;
-  transition:opacity .2s;
-  content: "♥";
- } */
-
  .main__anchor::before {
   font-size:90%;
+  right: 100%;
+  width: 30px;
+  
+  outline: 0;
+  color: var(--foregroundDefault);
+  font-size: 90%;
   line-height:inherit;
-  content: "♥";
-  opacity:0;
+  
+  
+  opacity:1;
+  display: inline-block;
+  text-align: center;
+  margin-right: 10px;
+  content: attr(content);
+  color: white;
+  padding: 2px;
+  background: green;
   
  } 
- .main__anchor:hover::before {
-  transition:opacity .2s;
-  opacity:1;
- } 
-
+ 
 .main_width-limit {
   max-width: 800px;
 }
