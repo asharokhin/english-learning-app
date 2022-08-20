@@ -1,19 +1,114 @@
-import React from "react";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 import styles from "./PresentTenses.module.css";
 
 const PresentTenses = () => {
+  const [sideBarIsOpen, toggleSidebar] = useState(false);
+  const { ref: s1, inView: visS1 } = useInView({
+    onChange: (inView) => {
+      if (inView) {
+        console.log("s1 creossed");
+      }
+    },
+    initialInView: true,
+    rootMargin: "0% 0% -50% 0%",
+  });
+
+  const { ref: s2, inView: visS2 } = useInView({
+    rootMargin: "0% 0% -50% 0%", // rootMargin: "-50% 0% -50% 0%",
+    onChange: (inView) => {
+      if (inView) {
+        console.log("s2 creossed");
+      }
+    },
+  });
+
+  const { ref: s3, inView: visS3 } = useInView({
+    onChange: (inView) => {
+      if (inView) {
+        console.log("s3 creossed");
+      }
+    },
+    initialInView: true,
+    rootMargin: "0% 0% -50% 0%",
+  });
+
+  const { ref: s4, inView: visS4 } = useInView({
+    onChange: (inView) => {
+      if (inView) {
+        console.log("s4 creossed");
+      }
+    },
+    initialInView: true,
+    rootMargin: "0% 0% -50% 0%",
+  });
+
   return (
     <div className={styles["page-wrapper"]}>
-      <div className={[styles.page, styles.page_inner_padding]}>
-        <div className={styles.page__inner} style={{ "padding-left": "50px" }}>
-          <main className={`${styles.main} ${styles["main_width-limit"]}`}>
+      {console.log(visS1, visS2, visS3, visS4)}
+      <div className={styles["hamburger-menu"]}>
+        <input
+          id={styles.menu__toggle}
+          type="checkbox"
+          onClick={() => {
+            toggleSidebar(!sideBarIsOpen);
+          }}
+        />
+        <label className={styles.menu__btn} htmlFor={styles.menu__toggle}>
+          <span />
+        </label>
+
+        <ul className={styles.menu__box}>
+          <li>
+            <a
+              className={`${styles.menu__item} ${visS1 ? styles.active : ""}`}
+              href="#"
+            >
+              Present simple
+            </a>
+          </li>
+          <li>
+            <a
+              className={`${styles.menu__item} ${visS2 ? styles.active : ""}`}
+              href="#"
+            >
+              Present continuous
+            </a>
+          </li>
+          <li>
+            <a
+              className={`${styles.menu__item} ${visS3 ? styles.active : ""}`}
+              href="#"
+            >
+              State verbs
+            </a>
+          </li>
+          <li>
+            <a
+              className={`${styles.menu__item} ${visS4 ? styles.active : ""}`}
+              href="#"
+            >
+              The verb to be
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className={styles.page}>
+        <div className={styles.page__inner} style={{ paddingLeft: "50px" }}>
+          <main
+            className={`${styles.main} ${styles["main_width-limit"]} ${
+              sideBarIsOpen ? styles.main_sidebar__opened : ""
+            }`}
+          >
             <header className={styles.main__header}>
               <h1>Present Tenses</h1>
             </header>
             <div className={styles.content}>
               <article className={styles.formatted}>
-                <div>
+                <section ref={s1}>
                   <h2>
                     <a
                       className={styles.main__anchor}
@@ -98,6 +193,8 @@ const PresentTenses = () => {
                     </li>
                   </ul>
                   <br />
+                </section>
+                <section ref={s2}>
                   <h2>
                     <a
                       className={styles.main__anchor}
@@ -232,6 +329,8 @@ const PresentTenses = () => {
                       </p>
                     </li>
                   </ul>
+                </section>
+                <section ref={s3}>
                   <h2>
                     <a
                       className={styles.main__anchor}
@@ -394,6 +493,8 @@ const PresentTenses = () => {
                   <p className={styles.example}>
                     The shop assistant <strong>is weighing</strong> the cheese.
                   </p>
+                </section>
+                <section ref={s4}>
                   <h2>
                     <a
                       className={styles.main__anchor}
@@ -427,7 +528,7 @@ const PresentTenses = () => {
                     as we don&apos;t want him to make any mistakes.
                   </p>
                   <hr />
-                </div>
+                </section>
               </article>
               <div className="exercises">
                 <Link to="./exercises" state={{ exId: "pt" }}>
