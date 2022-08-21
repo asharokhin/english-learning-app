@@ -165,12 +165,13 @@ td {
 }
 .menu__btn {
   position: fixed;
-  top: 20px;
+  top: 5em;
   left: 20px;
   width: 26px;
   height: 26px;
   cursor: pointer;
   z-index: 1;
+  margin-left: 300px;
 }
 .menu__btn > span,
 .menu__btn > span::before,
@@ -200,7 +201,7 @@ td {
   margin: 0;
   padding: 80px 0;
   list-style: none;
-  background-color: #ECEFF1;
+  background-color: #AED581;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
   transition-duration: .25s;
 }
@@ -215,8 +216,8 @@ td {
   transition-duration: .25s;
 }
 .menu__item:hover {
-  background-color: #CFD8DC;
+  background-color: #8BC34A;
 }
 .active {
-  background-color: #CFD8DC;
+  background-color: #8BC34A;
 }

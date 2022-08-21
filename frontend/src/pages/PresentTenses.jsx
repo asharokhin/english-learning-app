@@ -5,50 +5,49 @@ import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import styles from "./PresentTenses.module.css";
 
+const SECTION_AMOUNT = 4;
 const PresentTenses = () => {
-  const [sideBarIsOpen, toggleSidebar] = useState(false);
-  const { ref: s1, inView: visS1 } = useInView({
-    onChange: (inView) => {
-      if (inView) {
-        console.log("s1 creossed");
+  const [sideBarIsOpen, toggleSidebar] = useState(true);
+  const [activeSections, setActiveSections] = useState([
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  const onSectionInView = (inView, section) => {
+    if (inView) {
+      const sectionIdx = Number(section.target.id);
+      const sectionsVisibility = [];
+      for (let i = 0; i < SECTION_AMOUNT; i += 1) {
+        sectionsVisibility.push(i === sectionIdx);
       }
-    },
-    initialInView: true,
-    rootMargin: "0% 0% -50% 0%",
+      setActiveSections(sectionsVisibility);
+    }
+  };
+
+  const { ref: section1Ref } = useInView({
+    onChange: onSectionInView,
+    rootMargin: "-50% 0% -50% 0%",
   });
 
-  const { ref: s2, inView: visS2 } = useInView({
-    rootMargin: "0% 0% -50% 0%", // rootMargin: "-50% 0% -50% 0%",
-    onChange: (inView) => {
-      if (inView) {
-        console.log("s2 creossed");
-      }
-    },
+  const { ref: section2Ref } = useInView({
+    rootMargin: "-50% 0% -50% 0%",
+    onChange: onSectionInView,
   });
 
-  const { ref: s3, inView: visS3 } = useInView({
-    onChange: (inView) => {
-      if (inView) {
-        console.log("s3 creossed");
-      }
-    },
-    initialInView: true,
-    rootMargin: "0% 0% -50% 0%",
+  const { ref: section3Ref } = useInView({
+    onChange: onSectionInView,
+    rootMargin: "-50% 0% -50% 0%",
   });
 
-  const { ref: s4, inView: visS4 } = useInView({
-    onChange: (inView) => {
-      if (inView) {
-        console.log("s4 creossed");
-      }
-    },
-    initialInView: true,
+  const { ref: section4Ref } = useInView({
+    onChange: onSectionInView,
     rootMargin: "0% 0% -50% 0%",
   });
 
   return (
     <div className={styles["page-wrapper"]}>
-      {console.log(visS1, visS2, visS3, visS4)}
       <div className={styles["hamburger-menu"]}>
         <input
           id={styles.menu__toggle}
@@ -64,32 +63,40 @@ const PresentTenses = () => {
         <ul className={styles.menu__box}>
           <li>
             <a
-              className={`${styles.menu__item} ${visS1 ? styles.active : ""}`}
-              href="#"
+              className={`${styles.menu__item} ${
+                activeSections[0] ? styles.active : ""
+              }`}
+              href="#present-simple"
             >
               Present simple
             </a>
           </li>
           <li>
             <a
-              className={`${styles.menu__item} ${visS2 ? styles.active : ""}`}
-              href="#"
+              className={`${styles.menu__item} ${
+                activeSections[1] ? styles.active : ""
+              }`}
+              href="#present-continuous"
             >
               Present continuous
             </a>
           </li>
           <li>
             <a
-              className={`${styles.menu__item} ${visS3 ? styles.active : ""}`}
-              href="#"
+              className={`${styles.menu__item} ${
+                activeSections[2] ? styles.active : ""
+              }`}
+              href="#state-verbs"
             >
               State verbs
             </a>
           </li>
           <li>
             <a
-              className={`${styles.menu__item} ${visS4 ? styles.active : ""}`}
-              href="#"
+              className={`${styles.menu__item} ${
+                activeSections[3] ? styles.active : ""
+              }`}
+              href="#the-verb-to-be"
             >
               The verb to be
             </a>
@@ -108,7 +115,7 @@ const PresentTenses = () => {
             </header>
             <div className={styles.content}>
               <article className={styles.formatted}>
-                <section ref={s1}>
+                <section ref={section1Ref} id={0}>
                   <h2>
                     <a
                       className={styles.main__anchor}
@@ -194,7 +201,7 @@ const PresentTenses = () => {
                   </ul>
                   <br />
                 </section>
-                <section ref={s2}>
+                <section ref={section2Ref} id={1}>
                   <h2>
                     <a
                       className={styles.main__anchor}
@@ -330,7 +337,7 @@ const PresentTenses = () => {
                     </li>
                   </ul>
                 </section>
-                <section ref={s3}>
+                <section ref={section3Ref} id={2}>
                   <h2>
                     <a
                       className={styles.main__anchor}
@@ -494,7 +501,7 @@ const PresentTenses = () => {
                     The shop assistant <strong>is weighing</strong> the cheese.
                   </p>
                 </section>
-                <section ref={s4}>
+                <section ref={section4Ref} id={3}>
                   <h2>
                     <a
                       className={styles.main__anchor}
@@ -527,8 +534,9 @@ const PresentTenses = () => {
                     <strong>&apos;re</strong> all <strong>being</strong> quiet
                     as we don&apos;t want him to make any mistakes.
                   </p>
-                  <hr />
                 </section>
+
+                <div>Materials used:</div>
               </article>
               <div className="exercises">
                 <Link to="./exercises" state={{ exId: "pt" }}>
