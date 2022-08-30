@@ -3,7 +3,7 @@ import * as appConstants from "../../constants";
 // import { useLocation } from "react-router-dom";
 
 import Exercise from "./Exercise";
-import ExercisesResultList from "../ExerciseResultList/ExercisesResultList";
+// import ExercisesResultList from "../ExerciseResultList/ExercisesResultList";
 
 const exercises = [
   {
@@ -221,174 +221,174 @@ const exercises = [
       },
     ],
   },
-  {
-    id: "pt_2",
-    task: "Complete the email using the present simple or present continuous form of these verbs.",
-    type: appConstants.COMPLETE_THE_TEXT,
-    questions: [
-      // single question
-      {
-        textData: {
-          textType: "email",
-          greeting: "Dear Stephanie",
-          end: "Much love, Mick and Mary",
-        },
-        words: [
-          "behave",
-          "come",
-          "cost",
-          "eat",
-          "enjoy",
-          "feel",
-          "go",
-          "have",
-          "like",
-          "love",
-          "pay",
-          "realise",
-          "say",
-          "seem",
-          "serve",
-          "show",
-          "smile",
-          "stay",
-          "take",
-          "visit",
-        ],
-        paragraphs: [
-          // paragraph
-          [
-            {
-              pre: "How are you? We're fine. Our trip round the States",
-              answer: "is going",
-              post: "well and",
-              num: "1",
-            },
-            {
-              pre: "we",
-              answer: "are enjoying",
-              post: "ourselves a lot.",
-              num: "2",
-            },
-            {
-              pre: "One good surprise is that things",
-              answer: "cost",
-              post: "less here than back home.",
-              num: "3",
-            },
-            {
-              pre: "For example, this weekend we",
-              answer: "are staying",
-              post: "in a motel beside a lake and",
-              num: "4",
-            },
-            {
-              pre: "we",
-              answer: "are paying",
-              post: "only $65 per night for a room with a beautiful view.",
-              num: "5",
-            },
-          ],
-          // paragraph
-          [
-            {
-              pre: "The only thing we",
-              answer: "dont't like",
-              post: "(not) much is the food.",
-              num: "6",
-            },
-            {
-              pre: "Restaurants",
-              answer: "serve",
-              post: "dinner rather early.",
-              num: "7",
-            },
-            {
-              pre: "We",
-              answer: "never eat",
-              post: "at six o'clock at home so",
-              num: "8",
-            },
-            {
-              pre: "we",
-              answer: "don't feel",
-              post: "(not) hungry then and",
-              num: "9",
-            },
-            {
-              pre: "American portions",
-              answer: "seem",
-              post: "very big to us.",
-              num: "10",
-            },
-            {
-              pre: "Apart from that, we",
-              answer: "are having",
-              post: "a wonderful time.",
-              num: "11",
-            },
-            {
-              pre: "We",
-              answer: "are visiting",
-              post: "lots of interesting little towns and",
-              num: "12",
-            },
-            {
-              pre: "we absolutely",
-              answer: "love",
-              post: "the scenery.",
-              num: "13",
-            },
-          ],
-          // paragraph
-          [
-            {
-              pre: "People here",
-              answer: "behave",
-              post: "in a very friendly manner towards strangers.",
-              num: "14",
-            },
-            {
-              pre: "All the shop assistants",
-              answer: "smile",
-              post: "at us,",
-              num: "15",
-            },
-            {
-              pre: "and everyone",
-              answer: "says",
-              post: "'Have a nice day!'",
-              num: "16",
-            },
-            {
-              pre: "At home, the TV",
-              answer: "is always showing",
-              post: "(always) us bad news stories about the States,",
-              num: "17",
-            },
-            {
-              pre: "but in fact, when you",
-              answer: "come",
-              post: "here",
-              num: "18",
-            },
-            {
-              pre: "you",
-              answer: "realise",
-              post: "it's a really great place.",
-              num: "19",
-            },
-            {
-              pre: "We",
-              answer: "are taking",
-              post: "lots of photos to show you.",
-              num: "20",
-            },
-          ],
-        ],
-      },
-    ],
-  },
+  // {
+  //   id: "pt_2",
+  //   task: "Complete the email using the present simple or present continuous form of these verbs.",
+  //   type: appConstants.COMPLETE_THE_TEXT,
+  //   questions: [
+  //     // single question
+  //     {
+  //       textData: {
+  //         textType: "email",
+  //         greeting: "Dear Stephanie",
+  //         end: "Much love, Mick and Mary",
+  //       },
+  //       words: [
+  //         "behave",
+  //         "come",
+  //         "cost",
+  //         "eat",
+  //         "enjoy",
+  //         "feel",
+  //         "go",
+  //         "have",
+  //         "like",
+  //         "love",
+  //         "pay",
+  //         "realise",
+  //         "say",
+  //         "seem",
+  //         "serve",
+  //         "show",
+  //         "smile",
+  //         "stay",
+  //         "take",
+  //         "visit",
+  //       ],
+  //       paragraphs: [
+  //         // paragraph
+  //         [
+  //           {
+  //             pre: "How are you? We're fine. Our trip round the States",
+  //             answer: "is going",
+  //             post: "well and",
+  //             num: "1",
+  //           },
+  //           {
+  //             pre: "we",
+  //             answer: "are enjoying",
+  //             post: "ourselves a lot.",
+  //             num: "2",
+  //           },
+  //           {
+  //             pre: "One good surprise is that things",
+  //             answer: "cost",
+  //             post: "less here than back home.",
+  //             num: "3",
+  //           },
+  //           {
+  //             pre: "For example, this weekend we",
+  //             answer: "are staying",
+  //             post: "in a motel beside a lake and",
+  //             num: "4",
+  //           },
+  //           {
+  //             pre: "we",
+  //             answer: "are paying",
+  //             post: "only $65 per night for a room with a beautiful view.",
+  //             num: "5",
+  //           },
+  //         ],
+  //         // paragraph
+  //         [
+  //           {
+  //             pre: "The only thing we",
+  //             answer: "dont't like",
+  //             post: "(not) much is the food.",
+  //             num: "6",
+  //           },
+  //           {
+  //             pre: "Restaurants",
+  //             answer: "serve",
+  //             post: "dinner rather early.",
+  //             num: "7",
+  //           },
+  //           {
+  //             pre: "We",
+  //             answer: "never eat",
+  //             post: "at six o'clock at home so",
+  //             num: "8",
+  //           },
+  //           {
+  //             pre: "we",
+  //             answer: "don't feel",
+  //             post: "(not) hungry then and",
+  //             num: "9",
+  //           },
+  //           {
+  //             pre: "American portions",
+  //             answer: "seem",
+  //             post: "very big to us.",
+  //             num: "10",
+  //           },
+  //           {
+  //             pre: "Apart from that, we",
+  //             answer: "are having",
+  //             post: "a wonderful time.",
+  //             num: "11",
+  //           },
+  //           {
+  //             pre: "We",
+  //             answer: "are visiting",
+  //             post: "lots of interesting little towns and",
+  //             num: "12",
+  //           },
+  //           {
+  //             pre: "we absolutely",
+  //             answer: "love",
+  //             post: "the scenery.",
+  //             num: "13",
+  //           },
+  //         ],
+  //         // paragraph
+  //         [
+  //           {
+  //             pre: "People here",
+  //             answer: "behave",
+  //             post: "in a very friendly manner towards strangers.",
+  //             num: "14",
+  //           },
+  //           {
+  //             pre: "All the shop assistants",
+  //             answer: "smile",
+  //             post: "at us,",
+  //             num: "15",
+  //           },
+  //           {
+  //             pre: "and everyone",
+  //             answer: "says",
+  //             post: "'Have a nice day!'",
+  //             num: "16",
+  //           },
+  //           {
+  //             pre: "At home, the TV",
+  //             answer: "is always showing",
+  //             post: "(always) us bad news stories about the States,",
+  //             num: "17",
+  //           },
+  //           {
+  //             pre: "but in fact, when you",
+  //             answer: "come",
+  //             post: "here",
+  //             num: "18",
+  //           },
+  //           {
+  //             pre: "you",
+  //             answer: "realise",
+  //             post: "it's a really great place.",
+  //             num: "19",
+  //           },
+  //           {
+  //             pre: "We",
+  //             answer: "are taking",
+  //             post: "lots of photos to show you.",
+  //             num: "20",
+  //           },
+  //         ],
+  //       ],
+  //     },
+  //   ],
+  // },
   {
     id: "pt",
     task: "Choose the correct verb forms.",
@@ -605,13 +605,22 @@ const Exercises = () => {
     nextStep();
   };
 
+  const repeatExercises = () => {
+    setCurrentExerciseIdx(0);
+    setAllFinished(false);
+  };
+
   return (
     <>
       {allFinished ? (
-        <ExercisesResultList />
+        <div>
+          <p>Finished all</p>
+          <button type="button" onClick={() => repeatExercises()}>
+            Repeat exercises
+          </button>
+        </div>
       ) : (
         <>
-          <h1>Exercises</h1>
           <h3>Exercise {currentExerciseIdx + 1}</h3>
           <p>{exercises[currentExerciseIdx].task}</p>
           <Exercise

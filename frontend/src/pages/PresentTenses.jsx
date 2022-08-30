@@ -507,7 +507,6 @@ const PresentTenses = () => {
                 src="https://www.youtube.com/embed/UxHo94JGot0"
                 title="YouTube video player 1"
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
               <br />
@@ -517,7 +516,6 @@ const PresentTenses = () => {
                 src="https://www.youtube.com/embed/_TUKYWPuW4g"
                 title="YouTube video player 2"
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </div>

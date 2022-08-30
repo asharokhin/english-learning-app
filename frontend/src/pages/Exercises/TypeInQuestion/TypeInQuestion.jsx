@@ -22,7 +22,7 @@ const TypeInQuestion = ({ content, onSubmitAnswer }) => {
   };
 
   return (
-    <form onSubmit={onInputChanged}>
+    <form onSubmit={onInputChanged} autoComplete="off">
       <div>
         {content.sentences.map((s, i) => (
           <TypeInParagraph
