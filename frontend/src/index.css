@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 10dp;
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -47,6 +48,11 @@ body {
 
 .nav li:hover {
   background-color: #8BC34A;
+}
+.page-wrapper {
+  box-sizing: border-box;
+  grid-template-columns: 100%;
+
 }
 
 

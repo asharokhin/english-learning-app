@@ -23,10 +23,64 @@ td {
 }
 
 .page-wrapper {
-  display: flex;
-  justify-content: space-between;
+  box-sizing: border-box;
+  grid-template-columns: 100%;
+  /* display: flex;
+  justify-content: space-between; */
   /* min-height: 100%;
   margin-bottom: -100px; */
+}
+main {
+  min-height: 80vh;
+}
+.main-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);  gap: 3rem;
+  grid-template-areas: "toc main";
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.toc {
+  --offset: var(20px);
+  --max-height: calc(100vh - var(--offset));
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  grid-area: toc;
+  max-height: var(--max-height);
+  overflow: auto; 
+  position: -webkit-sticky;
+  position: sticky;
+}
+.document-toc-container {
+  display: flex; 
+  position: fixed;
+  top: 40px; 
+}
+.document-toc {
+  margin-bottom: 2rem;
+  padding: 0;
+  position: relative; 
+}
+
+.document-toc-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.document-toc-item {
+  margin: 0;
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.main-page-content {
+  overflow-wrap: break-word;
 }
 
 .page-wrapper:after {
@@ -47,7 +101,7 @@ td {
   color: #666;
   text-decoration: underline;
  }
- .main__anchor::before {
+ .main__anchor[content]::before {
   font-size:90%;
   right: 100%;
   width: 30px;
@@ -220,4 +274,10 @@ td {
 }
 .active {
   background-color: #8BC34A;
+}
+
+.section-exercises {
+  border-top: #313130 solid;
+  border-bottom: #313130 solid;
+  margin-top: 5rem;
 }

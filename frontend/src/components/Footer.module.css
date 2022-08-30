@@ -1,0 +1,8 @@
+.footer-container {
+  padding: 2rem 1rem;
+  position: relative;
+  box-sizing: border-box;
+  padding: 2rem 2rem;
+  margin-top: 10vh;
+  background: lightgreen;
+}
