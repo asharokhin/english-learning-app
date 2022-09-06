@@ -1,0 +1,19 @@
+{
+  "name": "english-learning-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "asharokhin",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "pg": "^8.8.0",
+    "sequelize": "^6.21.4"
+  }
+}
