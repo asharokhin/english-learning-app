@@ -1,5 +1,7 @@
 const router = require("express").Router();
 
+const { Exercise, McQuestion } = require('../models/')
+
 const ex_pres_tense = {
   id: "pt",
   task: "Choose the correct sentence from each pair.",
@@ -51,11 +53,34 @@ const ex_pres_tense = {
 };
 
 router.get("/", async (req, res) => {
+  const exercise = await Exercise.findAll() 
   res.json({ hello: "World" });
 });
 
 router.get("/present-tenses", async(req, res) => {
-    res.json(ex_pres_tense);
+    const exercise = await Exercise.findByPk(3) 
+    //const ress = await sequelize.query('SELECT * FROM exercises INNER JOIN "mc-questions" ON exercises.id = "mc-questions".exercise_id');
+    console.log("ress", ress)
+
+    //res.json(exercise);
+})
+
+router.post("/present-tenses", async(req, res) => {
+  const { task, type, questions} = req.body
+  console.log('questions', questions);
+  const exercise = await Exercise.create({task, type})
+
+  const exerciseId = exercise.dataValues.id;
+  console.log("exerciseId", exerciseId);
+
+  if (type === 'multiple_choice') {
+    await McQuestion.create({...questions[0], exerciseId})
+    await McQuestion.create({...questions[1], exerciseId})
+  } else if (type === "type-in-sentence") {
+
+  }
+ 
+  
 })
 
 module.exports = router;

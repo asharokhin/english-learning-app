@@ -1,0 +1,42 @@
+POST http://localhost:3001/resources/grammar/present-tenses HTTP/1.1
+Content-Type: application/json
+
+{
+  "task": "Complete these sentences with the present simple or present continuous form of the verbs.",
+   "type": "type-in-sentence",
+   "questions": 
+   [
+     {
+      "sentences": [
+        {
+          "pre": "My father",
+          "answer": "knows",
+          "hint": "know",
+          "post": "all about mending cars, but nothing about bicycles."
+        }
+      ]
+     },
+     {
+      "sentences": [
+        {
+          "pre": "Who",
+          "answer": "is",
+          "hint": "be",
+          "post": "that man?"
+        },
+        {
+          "pre": "Why",
+          "answer": "is your sister being",
+          "hint": "your sister / be",
+          "post": "so rude to him?"
+        },
+        {
+          "pre": "She",
+          "answer": "has",
+          "hint": "have",
+          "post": "such beautiful manners normally."
+        }
+      ]
+     }
+   ]
+}

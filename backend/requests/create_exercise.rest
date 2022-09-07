@@ -1,0 +1,21 @@
+
+POST http://localhost:3001/resources/grammar/present-tenses HTTP/1.1
+Content-Type: application/json
+
+{
+  "task": "Choose the correct sentence from each pair.", "type": "multiple_choice",
+   "questions": 
+   [
+     {
+      "choices": ["My brother lives with us until he can find a flat of his own.", "My brother is living with us until he can find a flat of his own."], 
+      "answer": 1
+     },
+      {
+        "choices": ["Megan goes to Hong Kong every January.", "Megan's going to Hong Kong every January."],
+        "answer": 0}
+   ]
+}
+
+    
+
+    
