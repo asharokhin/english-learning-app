@@ -18,11 +18,18 @@ Exercise.init({
         type: DataTypes.TEXT,
         allowNull: false
     },
- 
+    unit: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+    },
+    number: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    } 
 }, {
     sequelize,
     underscored: true,
-    timestamps: true,
+    timestamps: false,
     modelName: 'exercise'
 })
 

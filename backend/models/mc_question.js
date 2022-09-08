@@ -21,13 +21,16 @@ McQuestion.init({
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'exercises', key: 'id'},
-    }
- 
+    },
+    number: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    } 
 }, {
     sequelize,
     underscored: true,
     timestamps: false,
-    modelName: 'mc-question'
+    modelName: 'mc_question'
 })
 
 module.exports = McQuestion

@@ -1,1 +1,8 @@
 GET http://localhost:3001/resources/grammar/present-tenses HTTP/1.1
+
+SELECT * from (SELECT *
+FROM exercises e INNER JOIN tis_questions q
+ON e.id = q.exercise_id
+WHERE unit='present_tenses') t,  
+ti_sentences s WHERE s.id = ANY(SELECT unnest(sentences) FROM tis_questions q where q.id = 2)
+

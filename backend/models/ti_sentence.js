@@ -13,7 +13,7 @@ TiSentence.init({
     
     pre: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: true
     },
     answer: {
       type: DataTypes.TEXT,
@@ -21,18 +21,12 @@ TiSentence.init({
     },
     hint: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     post: {
       type: DataTypes.TEXT,
-      allowNull: false
-    },
-    questionId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: { model: 'tis_questions', key: 'id'},
-    }
- 
+      allowNull: true
+    } 
 }, {
     sequelize,
     underscored: true,

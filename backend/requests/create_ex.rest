@@ -4,6 +4,8 @@ Content-Type: application/json
 {
   "task": "Complete these sentences with the present simple or present continuous form of the verbs.",
    "type": "type-in-sentence",
+   "unit": "present_tenses",
+   "number": 2,
    "questions": 
    [
      {
